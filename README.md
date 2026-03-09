@@ -26,4 +26,5 @@ I’m Harvey, a creative developer and content creator who enjoys building inter
 
   ## 💰 You can help me by Donating
   [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/paypal.me/AlexRayhanson) 
+  <a href="https://www.buymeacoffee.com/Rayhanson" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
