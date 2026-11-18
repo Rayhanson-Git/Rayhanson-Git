@@ -1,30 +1,128 @@
-# 💫 About Me:
-I’m Harvey, a creative developer and content creator who enjoys building interactive digital experiences, producing gaming content, and combining design with technology. My work blends web development, creative coding, photography, editing, and content production to create projects that are both functional and visually engaging.<br><br>🔭 I’m currently working on<br>Interactive web projects, creative coding experiments, gaming content, and building my brand through RayBits Gaming.<br><br>👯 I’m looking to collaborate on<br>Content creation, creative front-end projects, gaming media, digital branding, and visually driven web experiences.<br><br>🤝 I’m looking for help with<br>Growing my content, improving production quality, and pushing my creative and technical projects to a more professional level.<br><br>🌱 I’m currently learning<br>Advanced front-end development, better visual storytelling, stronger editing workflows, and new ways to merge design, gaming, and tech.<br><br>💬 Ask me about<br>Content creation, OBS setup, DaVinci Resolve editing, Photoshop design work, photography, gaming media, and interactive web projects.<br><br>⚡ Fun fact<br>I enjoy turning ideas into full experiences — whether that means designing visuals, editing videos, capturing moments through photography, or building something interactive from scratch.
+<!-- Artwork is generated: `npm install && npm run build`. Stats redraw daily via .github/workflows/profile-stats.yml. -->
 
+<a href="https://rayhanson.tech/">
+  <img src="assets/hero.svg" width="100%" alt="Harvey Rayhanson: media artist, graphic designer, and AI engineer. I like understanding how things work, then imagining what else they could do." />
+</a>
 
-## 🌐 Socials:
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/AlexRayhanson) [![Pinterest](https://img.shields.io/badge/Pinterest-%23E60023.svg?logo=Pinterest&logoColor=white)](https://pinterest.com/AlexRayhanson) [![Twitch](https://img.shields.io/badge/Twitch-%239146FF.svg?logo=Twitch&logoColor=white)](https://twitch.tv/AlexRayhanson) [![X](https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white)](https://x.com/AlexRayhanson) [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@RayBitsGaming) 
+<p align="center">
+  <a href="https://rayhanson.tech/"><img src="assets/buttons/portfolio.svg" height="44" alt="Portfolio" /></a>
+  <a href="https://www.linkedin.com/in/rayhason/"><img src="assets/buttons/linkedin.svg" height="44" alt="LinkedIn" /></a>
+  <a href="mailto:Harvey@Rayhanson.tech"><img src="assets/buttons/email.svg" height="44" alt="Email" /></a>
+  <a href="https://youtube.com/@RayBitsGaming"><img src="assets/buttons/youtube.svg" height="44" alt="YouTube: RayBits Gaming" /></a>
+  <br />
+  <a href="https://instagram.com/AlexRayhanson"><img src="assets/buttons/instagram.svg" height="44" alt="Instagram" /></a>
+  <a href="https://x.com/AlexRayhanson"><img src="assets/buttons/x.svg" height="44" alt="X" /></a>
+  <a href="https://twitch.tv/AlexRayhanson"><img src="assets/buttons/twitch.svg" height="44" alt="Twitch" /></a>
+  <a href="https://pinterest.com/AlexRayhanson"><img src="assets/buttons/pinterest.svg" height="44" alt="Pinterest" /></a>
+</p>
 
-# 💻 Tech Stack:
-![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white) ![Windows Terminal](https://img.shields.io/badge/Windows%20Terminal-%234D4D4D.svg?style=for-the-badge&logo=windows-terminal&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white) ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white) ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) ![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white) ![Linode](https://img.shields.io/badge/linode-00A95C?style=for-the-badge&logo=linode&logoColor=white) ![Adobe](https://img.shields.io/badge/adobe-%23FF0000.svg?style=for-the-badge&logo=adobe&logoColor=white) ![Adobe Creative Cloud](https://img.shields.io/badge/Adobe%20Creative%20Cloud-DA1F26.svg?style=for-the-badge&logo=Adobe%20Creative%20Cloud&logoColor=white) ![Adobe Photoshop](https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white) ![Adobe Illustrator](https://img.shields.io/badge/adobe%20illustrator-%23FF9A00.svg?style=for-the-badge&logo=adobe%20illustrator&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Sketch](https://img.shields.io/badge/Sketch-FFB387?style=for-the-badge&logo=sketch&logoColor=black) ![Adobe Lightroom](https://img.shields.io/badge/Adobe%20Lightroom-31A8FF.svg?style=for-the-badge&logo=Adobe%20Lightroom&logoColor=white) ![Adobe Lightroom Classic](https://img.shields.io/badge/Adobe%20Lightroom%20Classic-31A8FF.svg?style=for-the-badge&logo=Adobe%20Lightroom%20Classic&logoColor=white) ![Adobe After Effects](https://img.shields.io/badge/Adobe%20After%20Effects-9999FF.svg?style=for-the-badge&logo=Adobe%20After%20Effects&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white) ![Airbnb](https://img.shields.io/badge/Airbnb-%23ff5a5f.svg?style=for-the-badge&logo=Airbnb&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white) ![Riot Games](https://img.shields.io/badge/riotgames-D32936.svg?style=for-the-badge&logo=riotgames&logoColor=white) ![Epic Games](https://img.shields.io/badge/epicgames-%23313131.svg?style=for-the-badge&logo=epicgames&logoColor=white) ![Steam](https://img.shields.io/badge/steam-%23000000.svg?style=for-the-badge&logo=steam&logoColor=white) ![Ubisoft](https://img.shields.io/badge/Ubisoft-%23F5F5F5.svg?style=for-the-badge&logo=Ubisoft&logoColor=black) ![Unity](https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white) ![Unreal Engine](https://img.shields.io/badge/unrealengine-%23313131.svg?style=for-the-badge&logo=unrealengine&logoColor=white) ![nVIDIA](https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white) ![PlayStation Network](https://img.shields.io/badge/PSN-%230070D1.svg?style=for-the-badge&logo=Playstation&logoColor=white) ![AMD](https://img.shields.io/badge/AMD-%23000000.svg?style=for-the-badge&logo=amd&logoColor=white) ![Uber](https://img.shields.io/badge/Uber-%23000000.svg?style=for-the-badge&logo=Uber&logoColor=white) ![OpenAPI Specification](https://img.shields.io/badge/openapiinitiative-%23000000.svg?style=for-the-badge&logo=openapiinitiative&logoColor=white) ![Home Assistant](https://img.shields.io/badge/home%20assistant-%2341BDF5.svg?style=for-the-badge&logo=home-assistant&logoColor=white) ![Portfolio](https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139) ![Raspberry Pi](https://img.shields.io/badge/-Raspberry_Pi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=Rayhanson-Git&theme=shadow_red&hide_border=false&include_all_commits=true&count_private=true)<br/>
-![](https://nirzak-streak-stats.vercel.app/?user=Rayhanson-Git&theme=shadow_red&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=Rayhanson-Git&theme=shadow_red&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
+<br />
 
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=Rayhanson-Git&theme=shadow_red&no-frame=false&no-bg=true&margin-w=4)
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/headers/about-light.svg" />
+  <img src="assets/headers/about-dark.svg" width="100%" alt="01 About: Hi, I’m Harvey" />
+</picture>
 
-### ✍️ Random Dev Quote
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=merko)
+I was the kid with a screwdriver in his pocket, taking things apart to see what was inside. That instinct never left. I still learn by experimenting, breaking things, fixing them, and asking one more question.
 
-### 🔝 Top Contributed Repo
-![](https://github-contributor-stats.vercel.app/api?username=Rayhanson-Git&limit=5&theme=shadow_red&combine_all_yearly_contributions=true)
+Gaming first drew me to graphic design. That led to interactive work, photography, video editing, and gaming content on **[RayBits Gaming](https://youtube.com/@RayBitsGaming)**. When AI arrived, it tied those interests together. Today most of my work is **AI systems and automation**: tools that take repetitive work off people’s hands, and give AI agents what they need to be useful.
 
----
-[![](https://visitcount.itsvg.in/api?id=Rayhanson-Git&icon=0&color=0)](https://visitcount.itsvg.in)
+I’m a designer as much as an engineer, so I still design, record, and edit. I want technology to fit into everyday life, so it helps us do more, spend our time well, and make room for what matters.
 
-  ## 💰 You can help me by Donating
-  [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/paypal.me/AlexRayhanson) 
-  <a href="https://www.buymeacoffee.com/Rayhanson" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+<table>
+  <tr>
+    <td width="50%" valign="top">
 
+**Right now**
+
+- Building **Enigma MCP**, the shared memory my own agents use every day
+- Shipping **Stanza**, word-by-word lyrics for the Mac
+- Growing **JimBro**, my local-first gym companion
+- Exploring **cybersecurity**
+
+</td>
+    <td width="50%" valign="top">
+
+**Ask me about**
+
+- MCP servers and multi-agent setups in Claude Code, Codex, and OpenClaw
+- Hybrid retrieval, RAG, and knowledge graphs
+- Taking a product from wireframe to live app
+- Webcam gestures, shaders, Resolve, Audition, and OBS
+
+</td>
+  </tr>
+</table>
+
+<img src="assets/principle.svg" width="100%" alt="How I work: I work as the architect and the reviewer. I define what a system must do, break it into steps that can be verified, and direct AI coding agents to build it. Nothing ships until it passes the tests and checks I set." />
+
+<br />
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/headers/work-light.svg" />
+  <img src="assets/headers/work-dark.svg" width="100%" alt="02 Selected work: Things I’ve designed and built" />
+</picture>
+
+<p>
+  <a href="https://rayhanson.tech/projects/enigma/"><img src="assets/cards/enigma.svg" width="49.4%" alt="Enigma MCP: one Rust binary that gives Claude Code, Codex, and other agents a shared memory, kept as plain notes in an Obsidian vault. 25 MCP tools, 507 tests." /></a>
+  <a href="https://rayhanson.tech/projects/stanza/"><img src="assets/cards/stanza.svg" width="49.4%" alt="Stanza: a macOS menu-bar app that draws the lyrics of the song you’re playing, word by word. 23 lyric styles." /></a>
+  <a href="https://rayhanson.tech/projects/jimbro/"><img src="assets/cards/jimbro.svg" width="49.4%" alt="JimBro: a local-first gym companion that plans your routine, logs every set, and reviews your progress." /></a>
+  <a href="https://virtual-theremin.rayhanson.tech/"><img src="assets/cards/theremin.svg" width="49.4%" alt="Virtual Theremin: a webcam instrument that maps hand movement to synthesized vocals, bass, and drums." /></a>
+</p>
+
+<p align="center"><sub><a href="https://github.com/Rayhanson-Git/enigma">Enigma on GitHub</a> · <a href="https://github.com/Rayhanson-Git/stanza">Stanza on GitHub</a> · <a href="https://github.com/Rayhanson-Git/stanza/releases/latest">Download Stanza for Mac</a> · <a href="https://jimbro.rayhanson.tech/">Try JimBro</a></sub></p>
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/headers/more-light.svg" />
+  <img src="assets/headers/more-dark.svg" width="100%" alt="03 Creative code, sound and video: More experiments" />
+</picture>
+
+<p>
+  <a href="https://gesture-particles.rayhanson.tech/"><img src="assets/cards/gesture.svg" width="32.6%" alt="Gesture Particles" /></a>
+  <a href="https://neon-orbit.rayhanson.tech/"><img src="assets/cards/neon.svg" width="32.6%" alt="Neon Orbit Arcade" /></a>
+  <a href="https://orbit-playground.rayhanson.tech/"><img src="assets/cards/orbit.svg" width="32.6%" alt="Orbit Playground" /></a>
+  <a href="https://wasp-dodge.rayhanson.tech/"><img src="assets/cards/wasp.svg" width="32.6%" alt="Wasp Dodge+" /></a>
+  <a href="https://rayhanson.tech/projects/gymlog/"><img src="assets/cards/gymlog.svg" width="32.6%" alt="GymLog" /></a>
+  <a href="https://leaveby.rayhanson.tech/leaveby"><img src="assets/cards/leaveby.svg" width="32.6%" alt="LeaveBy" /></a>
+  <a href="https://rayhanson.tech/projects/studio-apartment-evening/"><img src="assets/cards/studio.svg" width="32.6%" alt="Studio Apartment Evening" /></a>
+  <a href="https://rayhanson.tech/projects/devil-may-cry-music-video/"><img src="assets/cards/dmc.svg" width="32.6%" alt="Devil May Cry GMV" /></a>
+  <a href="https://github.com/DeepExtrema/tesseract/pull/21"><img src="assets/cards/tesseract.svg" width="32.6%" alt="Tesseract MCP contribution" /></a>
+</p>
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/headers/toolkit-light.svg" />
+  <img src="assets/headers/toolkit-dark.svg" width="100%" alt="04 Toolkit: What I build with" />
+</picture>
+
+<img src="assets/toolkit.svg" width="100%" alt="Toolkit. AI systems: Claude Code, Codex, MCP servers, OpenClaw, Obsidian, hybrid search and RAG. Languages: Rust, Swift, TypeScript, Python, C++, JavaScript, C#, Lua. Built with: SwiftUI and AppKit, React, Next.js, Tailwind, Three.js, p5.js, Tone.js, MediaPipe. Design and media: Photoshop, Illustrator, After Effects, Lightroom, Audition, DaVinci Resolve, OBS Studio. Ship and tinker: Vercel, Cloudflare, GitHub Actions, Raspberry Pi, Home Assistant, Unity, Unreal Engine." />
+
+<br />
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/headers/activity-light.svg" />
+  <img src="assets/headers/activity-dark.svg" width="100%" alt="05 On GitHub: Activity, updated daily" />
+</picture>
+
+<img src="assets/stats/activity.svg" width="100%" alt="GitHub contributions, streaks, commits and pull requests over the last 12 months, with a contribution calendar" />
+<img src="assets/stats/languages.svg" width="100%" alt="Languages across my public repositories" />
+
+<br />
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/headers/support-light.svg" />
+  <img src="assets/headers/support-dark.svg" width="100%" alt="06 Support: Fuel the next build" />
+</picture>
+
+If something I made helped you, or you just want to see more of it, you can chip in here. Every coffee goes into new projects and videos.
+
+<p>
+  <a href="https://www.buymeacoffee.com/Rayhanson"><img src="assets/buttons/coffee.svg" height="68" alt="Buy me a coffee" /></a>
+  &nbsp;
+  <a href="https://paypal.me/AlexRayhanson"><img src="assets/buttons/paypal.svg" height="68" alt="Tip with PayPal" /></a>
+</p>
+
+<br />
+
+<a href="https://rayhanson.tech/">
+  <img src="assets/footer.svg" width="100%" alt="Rayhanson. Thoughtful design, everyday impact. © 2026 Harvey Rayhanson, rayhanson.tech" />
+</a>

@@ -1,0 +1,16 @@
+{
+  "name": "rayhanson-profile",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "stats": "node scripts/stats.mjs"
+  },
+  "devDependencies": {
+    "@fontsource/jetbrains-mono": "^5.2.5",
+    "@fontsource/space-grotesk": "^5.2.5",
+    "@fontsource/inter": "^5.2.5",
+    "opentype.js": "^1.3.4",
+    "simple-icons": "^16.0.0"
+  }
+}
