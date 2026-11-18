@@ -4,7 +4,7 @@ import { C, F, text, paragraph, measure, svg, write, symbol, symbolHeight, wordm
 
 const fadeStyle = `
 .rise{animation:rise 1s cubic-bezier(.16,1,.3,1) both}
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes rise{from{transform:translateY(10px)}to{transform:none}}
 .flow{stroke-dasharray:3 97;animation:flow 5s linear infinite}
 @keyframes flow{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
 .pulse{transform-box:fill-box;transform-origin:center;animation:pulse 3.6s ease-in-out infinite}
