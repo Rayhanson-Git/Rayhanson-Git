@@ -336,7 +336,7 @@ function mini(slug, p) {
 // ============================== TOOLKIT ==============================
 function toolkit() {
   const rows = [
-    ['AI systems', [['siClaude', 'Claude Code'], ['lm:Cx', 'Codex'], ['siModelcontextprotocol', 'MCP servers'], ['lm:OC', 'OpenClaw'], ['siObsidian', 'Obsidian'], ['graph', 'Hybrid search · RAG']]],
+    ['AI systems', [['siModelcontextprotocol', 'MCP servers'], ['graph', 'Hybrid search · RAG'], ['lm:KG', 'Knowledge graphs'], ['lm:Em', 'Embeddings'], ['lm:Ev', 'Eval sets'], ['siObsidian', 'Obsidian']]],
     ['Languages', [['siRust', 'Rust'], ['siSwift', 'Swift'], ['siTypescript', 'TypeScript'], ['siPython', 'Python'], ['siCplusplus', 'C++'], ['siJavascript', 'JavaScript'], ['lm:C#', 'C#'], ['siLua', 'Lua']]],
     ['Built with', [['siApple', 'SwiftUI · AppKit'], ['siReact', 'React'], ['siNextdotjs', 'Next.js'], ['siTailwindcss', 'Tailwind'], ['siThreedotjs', 'Three.js'], ['siP5dotjs', 'p5.js'], ['lm:T', 'Tone.js'], ['siMediapipe', 'MediaPipe']]],
     ['Design & media', [['lm:Ps', 'Photoshop'], ['lm:Ai', 'Illustrator'], ['lm:Ae', 'After Effects'], ['lm:Lr', 'Lightroom'], ['lm:Au', 'Audition'], ['siDavinciresolve', 'DaVinci Resolve'], ['siObsstudio', 'OBS Studio']]],
@@ -380,10 +380,10 @@ function principle() {
   const W = 1280, H = 236;
   let s = cardFrame(W, H, `<rect x="0" y="0" width="6" height="${H}" rx="3" fill="${C.accent}" transform="translate(28 36) scale(1 .66)"/>`);
   s += text('HOW I WORK', { font: F.mono, size: 15, x: 60, y: 58, fill: C.ice, tracking: 0.16 });
-  s += paragraph('I work as the architect and the reviewer. I define what a system must do, break it into steps that can be verified, and direct AI coding agents to build it. Nothing ships until it passes the tests and checks I set.', {
+  s += paragraph('I don’t ship what I don’t understand. I design the architecture, write the hard parts myself, and take systems apart until I know exactly why they work. Every call is mine, and nothing goes out until it meets my standard.', {
     font: F.displayMedium, size: 29, x: 60, y: 108, width: 1150, lineHeight: 1.35, fill: C.ink,
   }).svg;
-  write('principle.svg', svg(W, H, s, { title: 'How I work', desc: 'I work as the architect and the reviewer. I define what a system must do, break it into steps that can be verified, and direct AI coding agents to build it. Nothing ships until it passes the tests and checks I set.' }));
+  write('principle.svg', svg(W, H, s, { title: 'How I work', desc: 'I don’t ship what I don’t understand. I design the architecture, write the hard parts myself, and take systems apart until I know exactly why they work. Every call is mine, and nothing goes out until it meets my standard.' }));
 }
 
 function footer() {
@@ -429,7 +429,7 @@ supportButtons();
 
 featured('enigma', {
   kicker: 'AI SYSTEMS · RUST · 2026', title: 'Enigma MCP',
-  desc: 'One Rust binary that gives Claude Code, Codex, and other agents a shared memory in Obsidian.',
+  desc: 'A Rust memory server I engineered so AI agents share one searchable brain.',
   stats: [['25', 'MCP tools'], ['507', 'tests'], ['3', 'OSes']], cta: 'CASE STUDY  →',
 });
 featured('stanza', {

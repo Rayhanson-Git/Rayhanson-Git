@@ -23,11 +23,11 @@
   <img src="assets/headers/about-dark.svg" width="100%" alt="01 About: Hi, I’m Harvey" />
 </picture>
 
-I was the kid with a screwdriver in his pocket, taking things apart to see what was inside. That instinct never left. I still learn by experimenting, breaking things, fixing them, and asking one more question.
+I was the kid with a screwdriver in his pocket, taking things apart to see what was inside. Not much has changed. I don’t trust anything until I’ve opened it up and figured out exactly how it works.
 
-Gaming first drew me to graphic design. That led to interactive work, photography, video editing, and gaming content on **[RayBits Gaming](https://youtube.com/@RayBitsGaming)**. When AI arrived, it tied those interests together. Today most of my work is **AI systems and automation**: tools that take repetitive work off people’s hands, and give AI agents what they need to be useful.
+Gaming pulled me into graphic design, then interactive work, photography, video editing, and content on **[RayBits Gaming](https://youtube.com/@RayBitsGaming)**. Today I engineer **AI systems and automation**, and I own them end to end: the architecture, the code, and the call on when they’re ready. **Enigma MCP**, a Rust memory server with 25 tools and 507 tests, is the latest proof.
 
-I’m a designer as much as an engineer, so I still design, record, and edit. I want technology to fit into everyday life, so it helps us do more, spend our time well, and make room for what matters.
+I’m a designer as much as an engineer. I still design, record, and edit, and I hold all of it to the same standard. The goal hasn’t changed: technology that fits into everyday life, cuts the busywork, and leaves room for what matters.
 
 <table>
   <tr>
@@ -35,17 +35,17 @@ I’m a designer as much as an engineer, so I still design, record, and edit. I 
 
 **Right now**
 
-- Building **Enigma MCP**, the shared memory my own agents use every day
+- Engineering **Enigma MCP**, a Rust memory server for AI agents
 - Shipping **Stanza**, word-by-word lyrics for the Mac
-- Growing **JimBro**, my local-first gym companion
-- Exploring **cybersecurity**
+- Building out **JimBro**, my local-first gym companion
+- Breaking into **cybersecurity**
 
 </td>
     <td width="50%" valign="top">
 
 **Ask me about**
 
-- MCP servers and multi-agent setups in Claude Code, Codex, and OpenClaw
+- Designing MCP servers and multi-agent architecture
 - Hybrid retrieval, RAG, and knowledge graphs
 - Taking a product from wireframe to live app
 - Webcam gestures, shaders, Resolve, Audition, and OBS
@@ -54,7 +54,7 @@ I’m a designer as much as an engineer, so I still design, record, and edit. I 
   </tr>
 </table>
 
-<img src="assets/principle.svg" width="100%" alt="How I work: I work as the architect and the reviewer. I define what a system must do, break it into steps that can be verified, and direct AI coding agents to build it. Nothing ships until it passes the tests and checks I set." />
+<img src="assets/principle.svg" width="100%" alt="How I work: I don’t ship what I don’t understand. I design the architecture, write the hard parts myself, and take systems apart until I know exactly why they work. Every call is mine, and nothing goes out until it meets my standard." />
 
 <br />
 
@@ -64,7 +64,7 @@ I’m a designer as much as an engineer, so I still design, record, and edit. I 
 </picture>
 
 <p>
-  <a href="https://rayhanson.tech/projects/enigma/"><img src="assets/cards/enigma.svg" width="49.4%" alt="Enigma MCP: one Rust binary that gives Claude Code, Codex, and other agents a shared memory, kept as plain notes in an Obsidian vault. 25 MCP tools, 507 tests." /></a>
+  <a href="https://rayhanson.tech/projects/enigma/"><img src="assets/cards/enigma.svg" width="49.4%" alt="Enigma MCP: a Rust memory server I engineered so AI agents share one searchable memory, kept as plain notes in Obsidian. 25 MCP tools, 507 tests." /></a>
   <a href="https://rayhanson.tech/projects/stanza/"><img src="assets/cards/stanza.svg" width="49.4%" alt="Stanza: a macOS menu-bar app that draws the lyrics of the song you’re playing, word by word. 23 lyric styles." /></a>
   <a href="https://rayhanson.tech/projects/jimbro/"><img src="assets/cards/jimbro.svg" width="49.4%" alt="JimBro: a local-first gym companion that plans your routine, logs every set, and reviews your progress." /></a>
   <a href="https://virtual-theremin.rayhanson.tech/"><img src="assets/cards/theremin.svg" width="49.4%" alt="Virtual Theremin: a webcam instrument that maps hand movement to synthesized vocals, bass, and drums." /></a>
@@ -94,7 +94,7 @@ I’m a designer as much as an engineer, so I still design, record, and edit. I 
   <img src="assets/headers/toolkit-dark.svg" width="100%" alt="04 Toolkit: What I build with" />
 </picture>
 
-<img src="assets/toolkit.svg" width="100%" alt="Toolkit. AI systems: Claude Code, Codex, MCP servers, OpenClaw, Obsidian, hybrid search and RAG. Languages: Rust, Swift, TypeScript, Python, C++, JavaScript, C#, Lua. Built with: SwiftUI and AppKit, React, Next.js, Tailwind, Three.js, p5.js, Tone.js, MediaPipe. Design and media: Photoshop, Illustrator, After Effects, Lightroom, Audition, DaVinci Resolve, OBS Studio. Ship and tinker: Vercel, Cloudflare, GitHub Actions, Raspberry Pi, Home Assistant, Unity, Unreal Engine." />
+<img src="assets/toolkit.svg" width="100%" alt="Toolkit. AI systems: MCP servers, hybrid search and RAG, knowledge graphs, embeddings, eval sets, Obsidian. Languages: Rust, Swift, TypeScript, Python, C++, JavaScript, C#, Lua. Built with: SwiftUI and AppKit, React, Next.js, Tailwind, Three.js, p5.js, Tone.js, MediaPipe. Design and media: Photoshop, Illustrator, After Effects, Lightroom, Audition, DaVinci Resolve, OBS Studio. Ship and tinker: Vercel, Cloudflare, GitHub Actions, Raspberry Pi, Home Assistant, Unity, Unreal Engine." />
 
 <br />
 
