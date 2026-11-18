@@ -25,7 +25,7 @@
 
 I was the kid with a screwdriver in his pocket, taking things apart to see what was inside. Not much has changed. I don’t trust anything until I’ve opened it up and figured out exactly how it works.
 
-Gaming pulled me into graphic design, then interactive work, photography, video editing, and content on **[RayBits Gaming](https://youtube.com/@RayBitsGaming)**. Today I engineer **AI systems and automation**, and I own them end to end: the architecture, the code, and the call on when they’re ready. **Enigma MCP**, a Rust memory server with 25 tools and 507 tests, is the latest proof.
+Gaming pulled me into graphic design, then interactive work, photography, video editing, and content on **[RayBits Gaming](https://youtube.com/@RayBitsGaming)**. Today I engineer **AI systems and automation**, and I own them end to end: the architecture, the code, and the call on when they’re ready. **Enigma MCP**, a Rust memory server with 25 tools and 512 tests, is the latest proof.
 
 I’m a designer as much as an engineer. I still design, record, and edit, and I hold all of it to the same standard. The goal hasn’t changed: technology that fits into everyday life, cuts the busywork, and leaves room for what matters.
 
@@ -64,10 +64,10 @@ I’m a designer as much as an engineer. I still design, record, and edit, and I
 </picture>
 
 <p>
-  <a href="https://rayhanson.tech/projects/enigma/"><img src="assets/cards/enigma.svg" width="49.4%" alt="Enigma MCP: a Rust memory server I engineered so AI agents share one searchable memory, kept as plain notes in Obsidian. 25 MCP tools, 507 tests." /></a>
+  <a href="https://rayhanson.tech/projects/enigma/"><img src="assets/cards/enigma.svg" width="49.4%" alt="Enigma MCP: a Rust memory server I engineered so AI agents share one searchable memory, kept as plain notes in Obsidian. 25 MCP tools, 512 tests." /></a>
   <a href="https://rayhanson.tech/projects/stanza/"><img src="assets/cards/stanza.svg" width="49.4%" alt="Stanza: a macOS menu-bar app that draws the lyrics of the song you’re playing, word by word. 23 lyric styles." /></a>
   <a href="https://rayhanson.tech/projects/jimbro/"><img src="assets/cards/jimbro.svg" width="49.4%" alt="JimBro: a local-first gym companion that plans your routine, logs every set, and reviews your progress." /></a>
-  <a href="https://virtual-theremin.rayhanson.tech/"><img src="assets/cards/theremin.svg" width="49.4%" alt="Virtual Theremin: a webcam instrument that maps hand movement to synthesized vocals, bass, and drums." /></a>
+  <a href="https://virtual-theremin.rayhanson.tech/"><img src="assets/cards/theremin.svg" width="49.4%" alt="Virtual Theremin: play vocals, bass, and finger-tap drums with your hands, with a small studio for loops. Works with a webcam or with mouse and keyboard." /></a>
 </p>
 
 <p align="center"><sub><a href="https://github.com/Rayhanson-Git/enigma">Enigma on GitHub</a> · <a href="https://github.com/Rayhanson-Git/stanza">Stanza on GitHub</a> · <a href="https://github.com/Rayhanson-Git/stanza/releases/latest">Download Stanza for Mac</a> · <a href="https://jimbro.rayhanson.tech/">Try JimBro</a></sub></p>

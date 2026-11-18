@@ -430,7 +430,7 @@ supportButtons();
 featured('enigma', {
   kicker: 'AI SYSTEMS · RUST · 2026', title: 'Enigma MCP',
   desc: 'A Rust memory server I engineered so AI agents share one searchable brain.',
-  stats: [['25', 'MCP tools'], ['507', 'tests'], ['3', 'OSes']], cta: 'CASE STUDY  →',
+  stats: [['25', 'MCP tools'], ['512', 'tests'], ['3', 'OSes']], cta: 'CASE STUDY  →',
 });
 featured('stanza', {
   kicker: 'MACOS APP · SWIFT · 2026', title: 'Stanza',
@@ -444,15 +444,15 @@ featured('jimbro', {
 });
 featured('theremin', {
   kicker: 'GESTURE & SOUND · REACT · 2026', title: 'Virtual Theremin',
-  desc: 'A webcam instrument: move your hands to play vocals, bass, and finger-tap drums.',
-  stats: [['2', 'hands'], ['1', 'webcam'], ['0', 'controllers']], cta: 'PLAY IT LIVE  →',
+  desc: 'Play vocals, bass, and finger-tap drums with your hands, in a studio you can loop. Camera optional.',
+  stats: [['2', 'hands'], ['4', 'drum sounds'], ['0', 'cameras needed']], cta: 'PLAY IT LIVE  →',
 });
 
 const minis = [
-  ['gesture', { motif: 'particles', kicker: 'COMPUTER VISION · THREE.JS', title: 'Gesture Particles', desc: 'Hand gestures reshape a 3D field of light.', cta: 'TRY IT  →' }],
+  ['gesture', { motif: 'particles', kicker: 'COMPUTER VISION · THREE.JS', title: 'Gesture Particles', desc: 'Up to 100k GPU particles, 12 morphing shapes, shaped by your hands.', cta: 'TRY IT  →' }],
   ['neon', { motif: 'neon', kicker: 'CREATIVE CODE · P5.JS', title: 'Neon Orbit Arcade', desc: 'Your cursor becomes an orb. Clicks open portals.', cta: 'TRY IT  →' }],
   ['orbit', { motif: 'orbits', kicker: 'GENERATIVE · P5.JS', title: 'Orbit Playground', desc: 'Each click sets a new centre of motion.', cta: 'TRY IT  →' }],
-  ['wasp', { motif: 'wasp', kicker: 'BROWSER GAME · P5.JS', title: 'Wasp Dodge+', desc: 'Four lives. Dodge the circles, survive one more second.', cta: 'PLAY  →' }],
+  ['wasp', { motif: 'wasp', kicker: 'BROWSER GAME · P5.JS', title: 'Wasp Dodge+', desc: 'Four lives, levels, and power-ups. Survive one more second.', cta: 'PLAY  →' }],
   ['gymlog', { motif: 'gymlog', kicker: 'UX DESIGN · PROTOTYPE', title: 'GymLog', desc: 'A workout log that’s quick and easy to correct.', cta: 'CASE STUDY  →' }],
   ['leaveby', { motif: 'leaveby', kicker: 'WEB APP · NEXT.JS', title: 'LeaveBy', desc: 'Work out, get ready, and leave on time.', cta: 'TRY IT  →' }],
   ['studio', { motif: 'audio', kicker: 'SOUND DESIGN · AUDITION', title: 'Studio Apartment Evening', titleSize: 27, desc: 'A 3:06 audio story from eleven sounds I recorded.', cta: 'LISTEN  →' }],
