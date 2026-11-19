@@ -1,13 +1,14 @@
 name: Profile stats
 
-# Redraws assets/stats/*.svg from live GitHub data once a day.
+# Redraws assets/stats/*.svg from live GitHub data once a day, and rebuilds the
+# card artwork so an edit to scripts/build.mjs can never leave stale images.
 on:
   schedule:
     - cron: "17 6 * * *"
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["scripts/**", "package.json", ".github/workflows/profile-stats.yml"]
+    paths: ["scripts/**", "assets/brand/**", "package.json", "package-lock.json", ".github/workflows/profile-stats.yml"]
 
 permissions:
   contents: write
@@ -20,12 +21,13 @@ jobs:
   draw:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: node scripts/build.mjs
       - run: node scripts/stats.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -34,5 +36,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/stats
-          git diff --cached --quiet || (git commit -m "Update profile stats" && git push)
+          git add assets
+          git diff --cached --quiet || (git commit -m "Update profile artwork and stats" && git push)

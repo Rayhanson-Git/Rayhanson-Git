@@ -10,7 +10,7 @@
   <a href="mailto:Harvey@Rayhanson.tech"><img src="assets/buttons/email.svg" height="44" alt="Email" /></a>
   <a href="https://youtube.com/@RayBitsGaming"><img src="assets/buttons/youtube.svg" height="44" alt="YouTube: RayBits Gaming" /></a>
   <br />
-  <a href="https://instagram.com/AlexRayhanson"><img src="assets/buttons/instagram.svg" height="44" alt="Instagram" /></a>
+  <a href="https://www.instagram.com/AlexRayhanson/"><img src="assets/buttons/instagram.svg" height="44" alt="Instagram" /></a>
   <a href="https://x.com/AlexRayhanson"><img src="assets/buttons/x.svg" height="44" alt="X" /></a>
   <a href="https://twitch.tv/AlexRayhanson"><img src="assets/buttons/twitch.svg" height="44" alt="Twitch" /></a>
   <a href="https://pinterest.com/AlexRayhanson"><img src="assets/buttons/pinterest.svg" height="44" alt="Pinterest" /></a>
@@ -29,32 +29,11 @@ Gaming pulled me into graphic design, then interactive work, photography, video 
 
 I’m a designer as much as an engineer. I still design, record, and edit, and I hold all of it to the same standard. The goal hasn’t changed: technology that fits into everyday life, cuts the busywork, and leaves room for what matters.
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
+**Right now:** engineering **Enigma MCP**, shipping **Stanza**, building out **JimBro**, and breaking into **cybersecurity**.
 
-**Right now**
+**Ask me about:** MCP servers and multi-agent architecture · hybrid retrieval, RAG, and knowledge graphs · taking a product from wireframe to live app · webcam gestures, shaders, Resolve, Audition, and OBS.
 
-- Engineering **Enigma MCP**, a Rust memory server for AI agents
-- Shipping **Stanza**, word-by-word lyrics for the Mac
-- Building out **JimBro**, my local-first gym companion
-- Breaking into **cybersecurity**
-
-</td>
-    <td width="50%" valign="top">
-
-**Ask me about**
-
-- Designing MCP servers and multi-agent architecture
-- Hybrid retrieval, RAG, and knowledge graphs
-- Taking a product from wireframe to live app
-- Webcam gestures, shaders, Resolve, Audition, and OBS
-
-</td>
-  </tr>
-</table>
-
-<img src="assets/principle.svg" width="100%" alt="How I work: I don’t ship what I don’t understand. I design the architecture, write the hard parts myself, and take systems apart until I know exactly why they work. Every call is mine, and nothing goes out until it meets my standard." />
+<a href="https://rayhanson.tech/#about"><picture><source media="(max-width: 600px)" srcset="assets/principle-narrow.svg" /><img src="assets/principle.svg" width="100%" alt="How I work: I don’t ship what I don’t understand. I design the architecture, get my hands dirty in the code, and take systems apart until I know exactly why they work. Every call is mine, and nothing goes out until it meets my standard." /></picture></a>
 
 <br />
 
@@ -64,37 +43,33 @@ I’m a designer as much as an engineer. I still design, record, and edit, and I
 </picture>
 
 <p>
-  <a href="https://rayhanson.tech/projects/enigma/"><img src="assets/cards/enigma.svg" width="49.4%" alt="Enigma MCP: a Rust memory server I engineered so AI agents share one searchable memory, kept as plain notes in Obsidian. 25 MCP tools, 512 tests." /></a>
-  <a href="https://rayhanson.tech/projects/stanza/"><img src="assets/cards/stanza.svg" width="49.4%" alt="Stanza: a macOS menu-bar app that draws the lyrics of the song you’re playing, word by word. 23 lyric styles." /></a>
-  <a href="https://rayhanson.tech/projects/jimbro/"><img src="assets/cards/jimbro.svg" width="49.4%" alt="JimBro: a local-first gym companion that plans your routine, logs every set, and reviews your progress." /></a>
-  <a href="https://virtual-theremin.rayhanson.tech/"><img src="assets/cards/theremin.svg" width="49.4%" alt="Virtual Theremin: play vocals, bass, and finger-tap drums with your hands, with a small studio for loops. Works with a webcam or with mouse and keyboard." /></a>
+  <a href="https://rayhanson.tech/projects/enigma/"><picture><source media="(max-width: 600px)" srcset="assets/cards/enigma.svg" width="100%" /><img src="assets/cards/enigma.svg" width="49.5%" alt="Enigma MCP: a Rust memory server I engineered so AI agents share one searchable memory, kept as plain notes in Obsidian. 25 MCP tools, 512 tests." /></picture><picture><source media="(max-width: 600px)" srcset="assets/spacer.svg" width="0" /><img src="assets/spacer.svg" width="0.9%" alt="" /></picture></a><a href="https://rayhanson.tech/projects/stanza/"><picture><source media="(max-width: 600px)" srcset="assets/cards/stanza.svg" width="100%" /><img src="assets/cards/stanza.svg" width="49.5%" alt="Stanza: a macOS menu-bar app that draws the lyrics of the song you’re playing, word by word. 23 lyric styles." /></picture></a>
+  <a href="https://rayhanson.tech/projects/jimbro/"><picture><source media="(max-width: 600px)" srcset="assets/cards/jimbro.svg" width="100%" /><img src="assets/cards/jimbro.svg" width="49.5%" alt="JimBro: a local-first gym companion. Plan around your day, log every set, and review your progress. 49 tests, live web app." /></picture><picture><source media="(max-width: 600px)" srcset="assets/spacer.svg" width="0" /><img src="assets/spacer.svg" width="0.9%" alt="" /></picture></a><a href="https://virtual-theremin.rayhanson.tech/"><picture><source media="(max-width: 600px)" srcset="assets/cards/theremin.svg" width="100%" /><img src="assets/cards/theremin.svg" width="49.5%" alt="Virtual Theremin: play vocals, bass, and finger-tap drums with your hands, then loop a bar of drums, pick a key, and record your take. Works with a webcam or with mouse and keyboard." /></picture></a>
 </p>
 
-<p align="center"><sub><a href="https://github.com/Rayhanson-Git/enigma">Enigma on GitHub</a> · <a href="https://github.com/Rayhanson-Git/stanza">Stanza on GitHub</a> · <a href="https://github.com/Rayhanson-Git/stanza/releases/latest">Download Stanza for Mac</a> · <a href="https://jimbro.rayhanson.tech/">Try JimBro</a></sub></p>
+<p align="center"><sub><a href="https://github.com/Rayhanson-Git/enigma">Enigma on GitHub</a> · <a href="https://github.com/Rayhanson-Git/stanza">Stanza on GitHub</a> · <a href="https://github.com/Rayhanson-Git/stanza/releases/latest">Download Stanza for Mac</a> · <a href="https://jimbro.rayhanson.tech/">Try JimBro</a> · <a href="https://rayhanson.tech/projects/virtual-theremin/">Virtual Theremin case study</a></sub></p>
+
+<br />
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="assets/headers/more-light.svg" />
-  <img src="assets/headers/more-dark.svg" width="100%" alt="03 Creative code, sound and video: More experiments" />
+  <img src="assets/headers/more-dark.svg" width="100%" alt="03 Apps, creative code and media: More work" />
 </picture>
 
 <p>
-  <a href="https://gesture-particles.rayhanson.tech/"><img src="assets/cards/gesture.svg" width="32.6%" alt="Gesture Particles" /></a>
-  <a href="https://neon-orbit.rayhanson.tech/"><img src="assets/cards/neon.svg" width="32.6%" alt="Neon Orbit Arcade" /></a>
-  <a href="https://orbit-playground.rayhanson.tech/"><img src="assets/cards/orbit.svg" width="32.6%" alt="Orbit Playground" /></a>
-  <a href="https://wasp-dodge.rayhanson.tech/"><img src="assets/cards/wasp.svg" width="32.6%" alt="Wasp Dodge+" /></a>
-  <a href="https://rayhanson.tech/projects/gymlog/"><img src="assets/cards/gymlog.svg" width="32.6%" alt="GymLog" /></a>
-  <a href="https://leaveby.rayhanson.tech/leaveby"><img src="assets/cards/leaveby.svg" width="32.6%" alt="LeaveBy" /></a>
-  <a href="https://rayhanson.tech/projects/studio-apartment-evening/"><img src="assets/cards/studio.svg" width="32.6%" alt="Studio Apartment Evening" /></a>
-  <a href="https://rayhanson.tech/projects/devil-may-cry-music-video/"><img src="assets/cards/dmc.svg" width="32.6%" alt="Devil May Cry GMV" /></a>
-  <a href="https://github.com/DeepExtrema/tesseract/pull/21"><img src="assets/cards/tesseract.svg" width="32.6%" alt="Tesseract MCP contribution" /></a>
+  <a href="https://gesture-particles.rayhanson.tech/"><picture><source media="(max-width: 600px)" srcset="assets/cards/gesture.svg" width="100%" /><img src="assets/cards/gesture.svg" width="32.7%" alt="Gesture Particles: up to 100,000 GPU particles in 12 morphing shapes, shaped by your hands or the mouse. Computer vision and Three.js." /></picture><picture><source media="(max-width: 600px)" srcset="assets/spacer.svg" width="0" /><img src="assets/spacer.svg" width="0.9%" alt="" /></picture></a><a href="https://neon-orbit.rayhanson.tech/"><picture><source media="(max-width: 600px)" srcset="assets/cards/neon.svg" width="100%" /><img src="assets/cards/neon.svg" width="32.7%" alt="Neon Orbit Arcade: your cursor becomes an orb, and portals pull or push particles, in three modes. Creative code in p5.js." /></picture><picture><source media="(max-width: 600px)" srcset="assets/spacer.svg" width="0" /><img src="assets/spacer.svg" width="0.9%" alt="" /></picture></a><a href="https://orbit-playground.rayhanson.tech/"><picture><source media="(max-width: 600px)" srcset="assets/cards/orbit.svg" width="100%" /><img src="assets/cards/orbit.svg" width="32.7%" alt="Orbit Playground: each click adds an orbit. Four shapes, four palettes, and a kaleidoscope. Generative p5.js." /></picture></a>
+  <a href="https://wasp-dodge.rayhanson.tech/"><picture><source media="(max-width: 600px)" srcset="assets/cards/wasp.svg" width="100%" /><img src="assets/cards/wasp.svg" width="32.7%" alt="Wasp Dodge+: a browser game with four lives, levels, and power-ups. Survive one more second." /></picture><picture><source media="(max-width: 600px)" srcset="assets/spacer.svg" width="0" /><img src="assets/spacer.svg" width="0.9%" alt="" /></picture></a><a href="https://rayhanson.tech/projects/gymlog/"><picture><source media="(max-width: 600px)" srcset="assets/cards/gymlog.svg" width="100%" /><img src="assets/cards/gymlog.svg" width="32.7%" alt="GymLog: a UX design prototype of a workout log that is quick and easy to correct." /></picture><picture><source media="(max-width: 600px)" srcset="assets/spacer.svg" width="0" /><img src="assets/spacer.svg" width="0.9%" alt="" /></picture></a><a href="https://leaveby.rayhanson.tech/leaveby"><picture><source media="(max-width: 600px)" srcset="assets/cards/leaveby.svg" width="100%" /><img src="assets/cards/leaveby.svg" width="32.7%" alt="LeaveBy: a Next.js web app that helps you work out, get ready, and leave on time." /></picture></a>
+  <a href="https://rayhanson.tech/projects/studio-apartment-evening/"><picture><source media="(max-width: 600px)" srcset="assets/cards/studio.svg" width="100%" /><img src="assets/cards/studio.svg" width="32.7%" alt="Studio Apartment Evening: a 3:06 audio story built from eleven sounds I recorded, edited in Adobe Audition." /></picture><picture><source media="(max-width: 600px)" srcset="assets/spacer.svg" width="0" /><img src="assets/spacer.svg" width="0.9%" alt="" /></picture></a><a href="https://rayhanson.tech/projects/devil-may-cry-music-video/"><picture><source media="(max-width: 600px)" srcset="assets/cards/dmc.svg" width="100%" /><img src="assets/cards/dmc.svg" width="32.7%" alt="Devil May Cry GMV: a 3:50 music video across Devil May Cry 3, 4 and 5, cut against live action in DaVinci Resolve." /></picture><picture><source media="(max-width: 600px)" srcset="assets/spacer.svg" width="0" /><img src="assets/spacer.svg" width="0.9%" alt="" /></picture></a><a href="https://github.com/DeepExtrema/tesseract/pull/21"><picture><source media="(max-width: 600px)" srcset="assets/cards/tesseract.svg" width="100%" /><img src="assets/cards/tesseract.svg" width="32.7%" alt="Tesseract MCP: my merged pull request to an agent memory server, adding atomic writes and per-agent identity." /></picture></a>
 </p>
+
+<br />
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="assets/headers/toolkit-light.svg" />
   <img src="assets/headers/toolkit-dark.svg" width="100%" alt="04 Toolkit: What I build with" />
 </picture>
 
-<img src="assets/toolkit.svg" width="100%" alt="Toolkit. AI systems: MCP servers, hybrid search and RAG, knowledge graphs, embeddings, eval sets, Obsidian. Languages: Rust, Swift, TypeScript, Python, C++, JavaScript, C#, Lua. Built with: SwiftUI and AppKit, React, Next.js, Tailwind, Three.js, p5.js, Tone.js, MediaPipe. Design and media: Photoshop, Illustrator, After Effects, Lightroom, Audition, DaVinci Resolve, OBS Studio. Ship and tinker: Vercel, Cloudflare, GitHub Actions, Raspberry Pi, Home Assistant, Unity, Unreal Engine." />
+<a href="https://rayhanson.tech/#about"><picture><source media="(max-width: 600px)" srcset="assets/toolkit-narrow.svg" /><img src="assets/toolkit.svg" width="100%" alt="Toolkit. AI systems: MCP servers, hybrid search and RAG, knowledge graphs, embeddings, eval sets, Obsidian. Languages: Rust, Swift, TypeScript, Python, C++, JavaScript, C#, Lua. Built with: SwiftUI and AppKit, React, Next.js, Tailwind, Three.js, p5.js, Tone.js, MediaPipe, GLSL shaders, SQLite. Design and media: Photoshop, Illustrator, After Effects, Lightroom, Audition, DaVinci Resolve, OBS Studio. Ship and tinker: Vercel, Cloudflare, GitHub Actions, Vite, Vitest, Raspberry Pi, Home Assistant, Unity, Unreal Engine." /></picture></a>
 
 <br />
 
@@ -103,8 +78,8 @@ I’m a designer as much as an engineer. I still design, record, and edit, and I
   <img src="assets/headers/activity-dark.svg" width="100%" alt="05 On GitHub: Activity, updated daily" />
 </picture>
 
-<img src="assets/stats/activity.svg" width="100%" alt="GitHub contributions, streaks, commits and pull requests over the last 12 months, with a contribution calendar" />
-<img src="assets/stats/languages.svg" width="100%" alt="Languages across my public repositories" />
+<a href="https://github.com/Rayhanson-Git?tab=repositories"><img src="assets/stats/activity.svg" width="100%" alt="GitHub contributions, streaks, commits and pull requests over the last 12 months, with a contribution calendar" /></a>
+<a href="https://github.com/Rayhanson-Git?tab=repositories"><img src="assets/stats/languages.svg" width="100%" alt="Languages across my public repositories" /></a>
 
 <br />
 

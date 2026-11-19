@@ -1,6 +1,6 @@
 // Builds the static artwork for the profile README: hero, section headers,
 // buttons, project cards, toolkit and footer. Run: npm run build
-import { C, F, text, paragraph, measure, svg, write, symbol, symbolHeight, wordmark, icon, REDUCED, r2 } from './lib.mjs';
+import { C, F, text, paragraph, wrap, measure, svg, write, symbol, symbolHeight, wordmark, icon, REDUCED, r2 } from './lib.mjs';
 
 const fadeStyle = `
 .rise{animation:rise 1s cubic-bezier(.16,1,.3,1) both}
@@ -21,7 +21,12 @@ const cta = (label, x, y, size, fill) => {
     `<path d="M${r2(ax)} ${r2(ay)}h${r2(size * 1.1)}m-${r2(size * 0.42)} -${r2(size * 0.4)}l${r2(size * 0.42)} ${r2(size * 0.4)}-${r2(size * 0.42)} ${r2(size * 0.4)}" stroke="${fill}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`;
 };
 const para = (str, o) => {
-  const r = paragraph(str, { ...o, maxLines: 99 });
+  // narrow the measure a little when that rescues a one-word last line without adding a line
+  let width = o.width;
+  const lines = (w) => wrap(str, o.font, o.size, w);
+  const n = lines(width).length;
+  while (n > 1 && width > 120 && !lines(width).at(-1).includes(' ') && lines(width - 6).length === n) width -= 6;
+  const r = paragraph(str, { ...o, width, maxLines: 99 });
   if (r.lines > o.maxLines) throw new Error(`Text too long for ${o.maxLines} lines: ${str}`);
   return r.svg;
 };
@@ -35,12 +40,12 @@ function hero() {
   const nodes = [
     ['Enigma MCP', 800, 108, 'end'],
     ['Stanza', 1068, 88, 'start'],
-    ['JimBro', 1196, 214, 'end'],
-    ['LeaveBy', 1150, 380, 'end'],
+    ['JimBro', 1172, 214, 'start'],
+    ['LeaveBy', 1150, 380, 'start'],
     ['GymLog', 972, 438, 'middle'],
-    ['Virtual Theremin', 790, 398, 'end'],
-    ['Gesture Particles', 772, 236, 'middle'],
-    ['Neon Orbit', 920, 64, 'end'],
+    ['Virtual Theremin', 806, 398, 'end'],
+    ['Gesture Particles', 796, 232, 'end'],
+    ['Neon Orbit Arcade', 920, 64, 'end'],
   ];
   const minor = [[860, 180], [1080, 170], [1100, 300], [880, 330], [1010, 352], [1150, 130], [1220, 320], [760, 190]];
   let strands = '', pulses = '', dots = '', labels = '';
@@ -53,11 +58,11 @@ function hero() {
     const d = curve(cx, cy, x, y, i % 2 ? 0.18 : -0.18);
     strands += `<path d="${d}" stroke="${C.haze}" stroke-width="1.4" opacity=".55"/>`;
     pulses += `<path d="${d}" pathLength="100" class="flow" stroke="${i % 3 === 0 ? C.accent2 : C.ice}" stroke-width="2.4" stroke-linecap="round" style="animation-delay:-${(i * 0.7).toFixed(1)}s"/>`;
-    dots += `<circle cx="${x}" cy="${y}" r="16" stroke="${C.ice}" class="pulse" style="animation-delay:-${(i * 0.45).toFixed(2)}s"/>`;
+    dots += `<circle cx="${x}" cy="${y}" r="13" stroke="${C.ice}" class="pulse" style="animation-delay:-${(i * 0.45).toFixed(2)}s"/>`;
     dots += `<circle cx="${x}" cy="${y}" r="5.5" fill="${C.ink}"/>`;
-    const lx = anchor === 'end' ? x - 16 : anchor === 'start' ? x + 16 : x;
+    const lx = anchor === 'end' ? x - 20 : anchor === 'start' ? x + 20 : x;
     const ly = anchor === 'middle' ? y + 36 : y + 4;
-    labels += text(label.toUpperCase(), { font: F.mono, size: 13, x: lx, y: ly, fill: C.ice, anchor, tracking: 0.08 });
+    labels += text(label.toUpperCase(), { font: F.mono, size: 15, x: lx, y: ly + 1, fill: C.ice, anchor, tracking: 0.06 });
   });
   // the outer web: neighbours and minor nodes
   const ring = nodes.map(([, x, y]) => [x, y]).concat(minor);
@@ -112,7 +117,7 @@ function hero() {
 
   write('hero.svg', svg(W, H, body, {
     title: 'Harvey Rayhanson — Media Artist, Graphic Designer, and AI Engineer',
-    desc: 'The Rayhanson logo at the centre of a living web of projects: Enigma MCP, Stanza, JimBro, LeaveBy, GymLog, Virtual Theremin, Gesture Particles and Neon Orbit.',
+    desc: 'The Rayhanson logo at the centre of a living web of projects: Enigma MCP, Stanza, JimBro, LeaveBy, GymLog, Virtual Theremin, Gesture Particles and Neon Orbit Arcade.',
     defs, style: fadeStyle,
   }));
 }
@@ -126,7 +131,7 @@ function header(slug, num, label, title, theme) {
   const titleW = measure(title, F.display, 44, -0.01);
   const lineStart = Math.max(titleW, 260) + 40;
   const body =
-    text(num, { font: F.mono, size: 17, x: 0, y: 32, fill: C.accent, tracking: 0.1 }) +
+    text(num, { font: F.mono, size: 17, x: 0, y: 32, fill: theme === 'dark' ? C.accent2 : C.accent, tracking: 0.1 }) +
     text(label.toUpperCase(), { font: F.mono, size: 17, x: 42, y: 32, fill: muted, tracking: 0.16 }) +
     text(title, { font: F.display, size: 44, x: 0, y: 90, fill: ink, tracking: -0.01 }) +
     `<path d="M${lineStart} 76H${W - 14}" stroke="${rule}" stroke-width="2"/>` +
@@ -154,14 +159,14 @@ function supportButtons() {
   write('buttons/coffee.svg', svg(W, H,
     `<rect width="${W}" height="${H}" rx="22" fill="${C.ink}"/>` + cup +
     text('Buy me a coffee', { font: F.display, size: 24, x: 92, y: 46, fill: C.paper, tracking: -0.01 }) +
-    text('BUYMEACOFFEE.COM/RAYHANSON', { font: F.mono, size: 11, x: 92, y: 68, fill: C.haze, tracking: 0.1 }) +
+    text('BUYMEACOFFEE.COM/RAYHANSON', { font: F.mono, size: 13, x: 92, y: 69, fill: C.deep, tracking: 0.06 }) +
     `<path d="M${W - 42} 36l8 8-8 8" stroke="${C.accent}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`,
     { title: 'Buy me a coffee', desc: 'Support Harvey on Buy Me a Coffee' }));
   const pp = `<g transform="translate(30 22)"><circle cx="22" cy="22" r="22" fill="${C.deep}"/>${icon('siPaypal', { x: 11, y: 11, size: 22, fill: C.ink })}</g>`;
   write('buttons/paypal.svg', svg(W, H,
     `<rect x=".75" y=".75" width="${W - 1.5}" height="${H - 1.5}" rx="22" fill="${C.paper}" stroke="${C.haze}" stroke-width="1.5"/>` + pp +
     text('Tip with PayPal', { font: F.display, size: 24, x: 92, y: 46, fill: C.ink, tracking: -0.01 }) +
-    text('PAYPAL.ME/ALEXRAYHANSON', { font: F.mono, size: 11, x: 92, y: 68, fill: C.ice, tracking: 0.1 }) +
+    text('PAYPAL.ME/ALEXRAYHANSON', { font: F.mono, size: 13, x: 92, y: 69, fill: C.ice, tracking: 0.06 }) +
     `<path d="M${W - 42} 36l8 8-8 8" stroke="${C.ice}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`,
     { title: 'Tip with PayPal', desc: 'Support Harvey on PayPal' }));
 }
@@ -197,7 +202,7 @@ const motifs = {
     return s;
   },
   jimbro() {
-    const rows = [['Bench press', '3 x 8'], ['Incline DB', '3 x 10'], ['Cable fly', '3 x 12'], ['Dips', '2 x AMRAP']];
+    const rows = [['Bench press', '3 x 8'], ['Incline DB', '3 x 10'], ['Cable fly', '3 x 12'], ['Dips', '3 x 8']];
     let s = text('TODAY · PUSH', { font: F.mono, size: 10, x: 16, y: 34, fill: C.ice, tracking: 0.12 });
     rows.forEach(([a, b], i) => {
       const y = 56 + i * 52;
@@ -215,27 +220,27 @@ const motifs = {
     let s = '';
     const wave = (amp, freq, phase) => {
       let d = '';
-      for (let x = 0; x <= 220; x += 4) d += `${x ? 'L' : 'M'}${x} ${r2(170 + amp * Math.sin((x / 220) * Math.PI * 2 * freq + phase))}`;
+      for (let x = -4; x <= 236; x += 4) d += `${x > -4 ? 'L' : 'M'}${x} ${r2(170 + amp * Math.sin((x / 220) * Math.PI * 2 * freq + phase))}`;
       return d;
     };
-    s += `<g class="drift"><path d="${wave(46, 2, 0)}" stroke="${C.ice}" stroke-width="2.2"/><path d="${wave(28, 3, 1)}" stroke="${C.haze}" stroke-width="1.6"/><path d="${wave(16, 5, 2)}" stroke="${C.accent}" stroke-width="1.4" opacity=".8"/></g>`;
+    s += `<clipPath id="tw"><rect x="8.7" width="202.6" height="340"/></clipPath><g clip-path="url(#tw)"><g class="drift"><path d="${wave(46, 2, 0)}" stroke="${C.ice}" stroke-width="2.2"/><path d="${wave(28, 3, 1)}" stroke="${C.haze}" stroke-width="1.6"/><path d="${wave(16, 5, 2)}" stroke="${C.accent}" stroke-width="1.4" opacity=".8"/></g></g>`;
     // two hand markers
     for (const [x, y, d] of [[52, 88, 0], [168, 252, 1.2]]) {
       s += `<g class="bob" style="animation-delay:-${d}s"><circle cx="${x}" cy="${y}" r="20" stroke="${C.ink}" stroke-width="1.5" stroke-dasharray="3 4"/><circle cx="${x}" cy="${y}" r="5" fill="${C.ink}"/></g>`;
     }
-    s += text('PITCH', { font: F.mono, size: 10, x: 14, y: 40, fill: C.ice, tracking: 0.12 }) +
-      text('VOLUME', { font: F.mono, size: 10, x: 206, y: 318, fill: C.ice, tracking: 0.12, anchor: 'end' });
+    s += text('VOLUME', { font: F.mono, size: 10, x: 14, y: 40, fill: C.ice, tracking: 0.12 }) +
+      text('PITCH', { font: F.mono, size: 10, x: 206, y: 318, fill: C.ice, tracking: 0.12, anchor: 'end' });
     return s;
   },
 };
 const motifStyle = `
-.word{animation:word 5.5s ease-in-out infinite;opacity:.22}
+.word{animation:word 5.5s ease-in-out infinite backwards}
 @keyframes word{0%{opacity:.22}8%,70%{opacity:1}85%,100%{opacity:.22}}
 .eq{transform-box:fill-box;transform-origin:bottom;animation:eq .9s ease-in-out infinite alternate}
 @keyframes eq{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
 .prog{transform-box:fill-box;transform-origin:left;animation:prog 5.5s linear infinite}
 @keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.check{animation:check 6s ease-out infinite;opacity:0}
+.check{animation:check 6s ease-out infinite backwards}
 @keyframes check{0%,4%{opacity:0}8%,88%{opacity:1}100%{opacity:0}}
 .drift{animation:drift 6s ease-in-out infinite alternate}@keyframes drift{to{transform:translateX(-14px)}}
 .bob{animation:bob 4s ease-in-out infinite alternate}@keyframes bob{to{transform:translateY(-16px)}}
@@ -254,7 +259,8 @@ function featured(slug, p) {
   for (const [n, l] of p.stats) {
     s += text(n, { font: F.display, size: 36, x: sx, y: 270, fill: C.ink, tracking: -0.01 });
     s += text(l.toUpperCase(), { font: F.mono, size: 12.5, x: sx, y: 292, fill: C.ice, tracking: 0.02 });
-    sx += Math.max(measure(n, F.display, 36), measure(l.toUpperCase(), F.mono, 12.5, 0.02)) + 26;
+    if (Math.max(measure(n, F.display, 36), measure(l.toUpperCase(), F.mono, 12.5, 0.02)) > 114) throw new Error(`Stat too wide: ${n} ${l}`);
+    sx += 124;
   }
   s += `<path d="M${tx} 312H${tw + tx}" stroke="${C.rule}"/>`;
   s += cta(p.cta, tx, 338, 14, C.accent2);
@@ -323,26 +329,26 @@ function mini(slug, p) {
   let s = cardFrame(W, H);
   s += `<svg x="${W - 128}" y="14" width="110" height="110" viewBox="0 0 140 140">${miniMotifs[p.motif]()}</svg>`;
   s += text(p.kicker, { font: F.mono, size: 14, x: 26, y: 46, fill: C.ice, tracking: 0.02 });
-  const titleLines = paragraph(p.title, { font: F.display, size: p.titleSize || 31, x: 25, y: 90, width: 262, lineHeight: 1.1, fill: C.ink });
+  const titleLines = paragraph(p.title, { font: F.display, size: 29, x: 25, y: 90, width: 262, lineHeight: 1.1, fill: C.ink });
   if (titleLines.lines > 2) throw new Error(`Title too long: ${p.title}`);
   s += titleLines.svg;
   const dy = 90 + titleLines.height + 4;
-  if (Math.max(dy, 158) + 19 * 1.35 > 212) throw new Error(`Card text collides with the link: ${p.title}`);
-  s += para(p.desc, { font: F.body, size: 19, x: 26, y: Math.max(dy, 158), width: 372, lineHeight: 1.35, fill: C.ink2, maxLines: 2 });
+  if (dy > 162) throw new Error(`Card text collides with the title: ${p.title}`);
+  s += para(p.desc, { font: F.body, size: 19, x: 26, y: 162, width: 372, lineHeight: 1.35, fill: C.ink2, maxLines: 2 });
   s += cta(p.cta, 26, 228, 14, C.accent2);
   write(`cards/${slug}.svg`, svg(W, H, s, { title: `${p.title} — ${p.desc}`, desc: p.kicker, style: miniStyle }));
 }
 
 // ============================== TOOLKIT ==============================
-function toolkit() {
+function toolkit(W = 1048, file = 'toolkit.svg') {
   const rows = [
     ['AI systems', [['siModelcontextprotocol', 'MCP servers'], ['graph', 'Hybrid search · RAG'], ['lm:KG', 'Knowledge graphs'], ['lm:Em', 'Embeddings'], ['lm:Ev', 'Eval sets'], ['siObsidian', 'Obsidian']]],
     ['Languages', [['siRust', 'Rust'], ['siSwift', 'Swift'], ['siTypescript', 'TypeScript'], ['siPython', 'Python'], ['siCplusplus', 'C++'], ['siJavascript', 'JavaScript'], ['lm:C#', 'C#'], ['siLua', 'Lua']]],
-    ['Built with', [['siApple', 'SwiftUI · AppKit'], ['siReact', 'React'], ['siNextdotjs', 'Next.js'], ['siTailwindcss', 'Tailwind'], ['siThreedotjs', 'Three.js'], ['siP5dotjs', 'p5.js'], ['lm:T', 'Tone.js'], ['siMediapipe', 'MediaPipe']]],
+    ['Built with', [['siApple', 'SwiftUI · AppKit'], ['siReact', 'React'], ['siNextdotjs', 'Next.js'], ['siTailwindcss', 'Tailwind'], ['siThreedotjs', 'Three.js'], ['siP5dotjs', 'p5.js'], ['lm:T', 'Tone.js'], ['siMediapipe', 'MediaPipe'], ['siOpengl', 'GLSL shaders'], ['siSqlite', 'SQLite']]],
     ['Design & media', [['lm:Ps', 'Photoshop'], ['lm:Ai', 'Illustrator'], ['lm:Ae', 'After Effects'], ['lm:Lr', 'Lightroom'], ['lm:Au', 'Audition'], ['siDavinciresolve', 'DaVinci Resolve'], ['siObsstudio', 'OBS Studio']]],
-    ['Ship & tinker', [['siVercel', 'Vercel'], ['siCloudflare', 'Cloudflare'], ['siGithubactions', 'GitHub Actions'], ['siRaspberrypi', 'Raspberry Pi'], ['siHomeassistant', 'Home Assistant'], ['siUnity', 'Unity'], ['siUnrealengine', 'Unreal Engine']]],
+    ['Ship & tinker', [['siVercel', 'Vercel'], ['siCloudflare', 'Cloudflare'], ['siGithubactions', 'GitHub Actions'], ['siVite', 'Vite'], ['siVitest', 'Vitest'], ['siRaspberrypi', 'Raspberry Pi'], ['siHomeassistant', 'Home Assistant'], ['siUnity', 'Unity'], ['siUnrealengine', 'Unreal Engine']]],
   ];
-  const W = 900, X0 = 28, maxX = W - 28, CH = 40, GAP = 8;
+  const X0 = 28, maxX = W - 28, CH = 40, GAP = 8;
   let y = 30, s = '';
   for (const [label, items] of rows) {
     s += text(label.toUpperCase(), { font: F.mono, size: 13, x: 30, y: y + 14, fill: C.ice, tracking: 0.12 });
@@ -355,11 +361,14 @@ function toolkit() {
       let acc = 0, best = 1, bestDiff = Infinity;
       widths.forEach((w, i) => { acc += w + GAP; const d = Math.abs(acc - (total + GAP) / 2); if (d < bestDiff) { bestDiff = d; best = i + 1; } });
       breakAt = best;
+      // on a narrow artboard two lines may not be enough: fall back to plain wrapping
+      const run = (from, to) => widths.slice(from, to).reduce((sum, w) => sum + w + GAP, -GAP);
+      if (X0 + Math.max(run(0, best), run(best)) > maxX) breakAt = -1;
     }
     let x = X0;
     for (const [idx, [ic, name]] of items.entries()) {
       const w = widths[idx];
-      if (idx === breakAt) { x = X0; y += CH + GAP; }
+      if (idx === breakAt || (breakAt === -1 && x > X0 && x + w > maxX)) { x = X0; y += CH + GAP; }
       s += `<rect x="${r2(x) + .5}" y="${y + .5}" width="${r2(w)}" height="${CH}" rx="12" fill="${C.paper2}" stroke="${C.rule}"/>` +
         icon(ic, { x: x + 12, y: y + 11, size: 18, fill: C.ink }) +
         text(name, { font: F.bodyMedium, size: 15, x: x + 39, y: y + 25.5, fill: C.ink });
@@ -369,26 +378,27 @@ function toolkit() {
     s += `<path d="M28 ${y - 15}H${W - 28}" stroke="${C.rule}" stroke-dasharray="2 6"/>`;
   }
   const H = y - 4;
-  write('toolkit.svg', svg(W, H, cardFrame(W, H) + s, {
+  write(file, svg(W, H, cardFrame(W, H) + s, {
     title: 'Toolkit',
     desc: rows.map(([l, it]) => `${l}: ${it.map((i) => i[1]).join(', ')}`).join('. '),
   }));
 }
 
 // ============================== QUOTE / FOOTER ==============================
-function principle() {
-  const W = 1280, H = 236;
-  let s = cardFrame(W, H, `<rect x="0" y="0" width="6" height="${H}" rx="3" fill="${C.accent}" transform="translate(28 36) scale(1 .66)"/>`);
+const QUOTE = 'I don’t ship what I don’t understand. I design the architecture, get my hands dirty in the code, and take systems apart until I know exactly why they work. Every call is mine, and nothing goes out until it meets my standard.';
+function principle(W = 1280, file = 'principle.svg') {
+  const narrow = W < 1000;
+  const quote = paragraph(QUOTE, { font: F.displayMedium, size: 29, x: 60, y: 108, width: W - (narrow ? 96 : 130), lineHeight: 1.35, fill: C.ink });
+  const H = Math.round(119 + quote.height);
+  let s = cardFrame(W, H, `<rect x="28" y="36" width="6" height="${H - 72}" rx="3" fill="${C.accent}"/>`);
   s += text('HOW I WORK', { font: F.mono, size: 15, x: 60, y: 58, fill: C.ice, tracking: 0.16 });
-  s += paragraph('I don’t ship what I don’t understand. I design the architecture, write the hard parts myself, and take systems apart until I know exactly why they work. Every call is mine, and nothing goes out until it meets my standard.', {
-    font: F.displayMedium, size: 29, x: 60, y: 108, width: 1150, lineHeight: 1.35, fill: C.ink,
-  }).svg;
-  write('principle.svg', svg(W, H, s, { title: 'How I work', desc: 'I don’t ship what I don’t understand. I design the architecture, write the hard parts myself, and take systems apart until I know exactly why they work. Every call is mine, and nothing goes out until it meets my standard.' }));
+  s += quote.svg;
+  write(file, svg(W, H, s, { title: 'How I work', desc: QUOTE }));
 }
 
 function footer() {
-  const W = 1280, H = 260;
-  const defs = `<radialGradient id="g" cx="640" cy="260" r="520" gradientUnits="userSpaceOnUse"><stop stop-color="${C.haze}" stop-opacity=".35"/><stop offset="1" stop-color="${C.haze}" stop-opacity="0"/></radialGradient><clipPath id="c"><rect width="${W}" height="${H}" rx="28"/></clipPath>`;
+  const W = 1280, H = 280;
+  const defs = `<radialGradient id="g" cx="640" cy="280" r="520" gradientUnits="userSpaceOnUse"><stop stop-color="${C.haze}" stop-opacity=".35"/><stop offset="1" stop-color="${C.haze}" stop-opacity="0"/></radialGradient><clipPath id="c"><rect width="${W}" height="${H}" rx="28"/></clipPath>`;
   let wave = '';
   for (let k = 0; k < 4; k++) {
     let d = '';
@@ -399,7 +409,7 @@ function footer() {
   const s = `<g clip-path="url(#c)"><rect width="${W}" height="${H}" fill="${C.paper}"/><rect width="${W}" height="${H}" fill="url(#g)"/>${wave}` +
     wordmark({ x: 640 - ww / 2, y: 30, width: ww }) +
     text('Thoughtful design, everyday impact', { font: F.display, size: 38, x: 640, y: 168, fill: C.ink, anchor: 'middle', tracking: -0.01 }) +
-    text('© 2026 HARVEY RAYHANSON · RAYHANSON.TECH', { font: F.mono, size: 15, x: 640, y: 248, fill: C.ice, anchor: 'middle', tracking: 0.14 }) +
+    text('© 2026 HARVEY RAYHANSON · RAYHANSON.TECH', { font: F.mono, size: 15, x: 640, y: 254, fill: C.ice, anchor: 'middle', tracking: 0.14 }) +
     `</g><rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="28" stroke="${C.rule}"/>`;
   write('footer.svg', svg(W, H, s, {
     title: 'Rayhanson — Thoughtful design, everyday impact', desc: '© 2026 Harvey Rayhanson, rayhanson.tech', defs,
@@ -412,7 +422,7 @@ hero();
 for (const t of ['dark', 'light']) {
   header('about', '01', 'About', 'Hi, I’m Harvey', t);
   header('work', '02', 'Selected work', 'Things I’ve designed and built', t);
-  header('more', '03', 'Creative code, sound & video', 'More experiments', t);
+  header('more', '03', 'Apps, creative code & media', 'More work', t);
   header('toolkit', '04', 'Toolkit', 'What I build with', t);
   header('activity', '05', 'On GitHub', 'Activity, updated daily', t);
   header('support', '06', 'Support', 'Fuel the next build', t);
@@ -426,6 +436,8 @@ linkButton('x', 'X', 'siX');
 linkButton('twitch', 'Twitch', 'siTwitch');
 linkButton('pinterest', 'Pinterest', 'siPinterest');
 supportButtons();
+// invisible gutter between cards in a row (see README.md)
+write('spacer.svg', '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"/>\n');
 
 featured('enigma', {
   kicker: 'AI SYSTEMS · RUST · 2026', title: 'Enigma MCP',
@@ -439,29 +451,31 @@ featured('stanza', {
 });
 featured('jimbro', {
   kicker: 'PRODUCT DESIGN · NEXT.JS · 2026', title: 'JimBro',
-  desc: 'A local-first gym companion: plan a routine, log every set, review your progress.',
-  stats: [['2-in-1', 'LeaveBy+GymLog'], ['Live', 'web app']], cta: 'CASE STUDY  →',
+  desc: 'A local-first gym companion: plan around your day, log every set, review your progress.',
+  stats: [['49', 'tests'], ['Live', 'web app'], ['2-in-1', 'LeaveBy+GymLog']], cta: 'CASE STUDY  →',
 });
 featured('theremin', {
   kicker: 'GESTURE & SOUND · REACT · 2026', title: 'Virtual Theremin',
-  desc: 'Play vocals, bass, and finger-tap drums with your hands, in a studio you can loop. Camera optional.',
+  desc: 'Play vocals, bass, and finger-tap drums with your hands. Loop a bar, pick a key, record your take.',
   stats: [['2', 'hands'], ['4', 'drum sounds'], ['0', 'cameras needed']], cta: 'PLAY IT LIVE  →',
 });
 
 const minis = [
-  ['gesture', { motif: 'particles', kicker: 'COMPUTER VISION · THREE.JS', title: 'Gesture Particles', desc: 'Up to 100k GPU particles, 12 morphing shapes, shaped by your hands.', cta: 'TRY IT  →' }],
-  ['neon', { motif: 'neon', kicker: 'CREATIVE CODE · P5.JS', title: 'Neon Orbit Arcade', desc: 'Your cursor becomes an orb. Clicks open portals.', cta: 'TRY IT  →' }],
-  ['orbit', { motif: 'orbits', kicker: 'GENERATIVE · P5.JS', title: 'Orbit Playground', desc: 'Each click sets a new centre of motion.', cta: 'TRY IT  →' }],
+  ['gesture', { motif: 'particles', kicker: 'COMPUTER VISION · THREE.JS', title: 'Gesture Particles', desc: 'Up to 100k GPU particles in 12 morphing shapes. Hands or mouse.', cta: 'TRY IT  →' }],
+  ['neon', { motif: 'neon', kicker: 'CREATIVE CODE · P5.JS', title: 'Neon Orbit Arcade', desc: 'Your cursor becomes an orb. Portals pull or push, in three modes.', cta: 'TRY IT  →' }],
+  ['orbit', { motif: 'orbits', kicker: 'GENERATIVE · P5.JS', title: 'Orbit Playground', desc: 'Each click adds an orbit. Four shapes, four palettes, a kaleidoscope.', cta: 'TRY IT  →' }],
   ['wasp', { motif: 'wasp', kicker: 'BROWSER GAME · P5.JS', title: 'Wasp Dodge+', desc: 'Four lives, levels, and power-ups. Survive one more second.', cta: 'PLAY  →' }],
   ['gymlog', { motif: 'gymlog', kicker: 'UX DESIGN · PROTOTYPE', title: 'GymLog', desc: 'A workout log that’s quick and easy to correct.', cta: 'CASE STUDY  →' }],
   ['leaveby', { motif: 'leaveby', kicker: 'WEB APP · NEXT.JS', title: 'LeaveBy', desc: 'Work out, get ready, and leave on time.', cta: 'TRY IT  →' }],
-  ['studio', { motif: 'audio', kicker: 'SOUND DESIGN · AUDITION', title: 'Studio Apartment Evening', titleSize: 27, desc: 'A 3:06 audio story from eleven sounds I recorded.', cta: 'LISTEN  →' }],
+  ['studio', { motif: 'audio', kicker: 'SOUND DESIGN · AUDITION', title: 'Studio Apartment Evening', desc: 'A 3:06 audio story from eleven sounds I recorded.', cta: 'LISTEN  →' }],
   ['dmc', { motif: 'film', kicker: 'VIDEO EDIT · DAVINCI RESOLVE', title: 'Devil May Cry GMV', desc: '3:50 across DMC 3, 4 and 5, cut against live action.', cta: 'WATCH  →' }],
-  ['tesseract', { motif: 'merge', kicker: 'OPEN SOURCE · PYTHON', title: 'Tesseract MCP', desc: 'Merged PR: atomic writes and per-agent identity.', cta: 'SEE THE PR  →' }],
+  ['tesseract', { motif: 'merge', kicker: 'OPEN SOURCE · PYTHON', title: 'Tesseract MCP', desc: 'Merged PR to an agent memory server: atomic writes, per-agent identity.', cta: 'SEE THE PR  →' }],
 ];
 for (const [slug, p] of minis) mini(slug, p);
 
 toolkit();
+toolkit(560, 'toolkit-narrow.svg');
 principle();
+principle(640, 'principle-narrow.svg');
 footer();
 console.log('artwork built');

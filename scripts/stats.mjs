@@ -1,11 +1,17 @@
 // Draws the GitHub activity and language cards from live data.
 // Runs daily in .github/workflows/profile-stats.yml with the workflow's token,
 // so the stats are self-hosted: no third-party stats service, nothing to break.
-// Without a token it draws the same cards in a "waiting for first sync" state.
-import { C, F, text, measure, svg, write, REDUCED, r2 } from './lib.mjs';
+// If live data can't be fetched, existing cards are left untouched; the
+// "waiting for first sync" state is only drawn on a checkout with no cards yet.
+import fs from 'node:fs';
+import path from 'node:path';
+import { C, F, text, measure, svg, write, r2, ASSETS } from './lib.mjs';
 
 const USER = process.env.PROFILE_USER || 'Rayhanson-Git';
 const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+// GitHub files a contribution under the committer's local date, so "today" is the owner's today.
+const TZ = process.env.PROFILE_TZ || 'America/New_York';
+const localToday = () => new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 
 const QUERY = `query($login:String!){
   user(login:$login){
@@ -31,15 +37,17 @@ async function fetchData() {
   });
   const json = await res.json();
   if (!res.ok || json.errors) throw new Error(JSON.stringify(json.errors || json));
+  if (!json.data?.user) throw new Error(`no data for user ${USER}`);
   return json.data.user;
 }
 
-function streaks(days) {
+function streaks(days, today = localToday()) {
   let longest = 0, run = 0;
   for (const d of days) { run = d.contributionCount ? run + 1 : 0; longest = Math.max(longest, run); }
   let current = 0;
   let i = days.length - 1;
-  if (i >= 0 && days[i].contributionCount === 0) i--; // today can still be empty
+  // the owner's today (and any later calendar day) can still be empty without ending the streak
+  while (i >= 0 && days[i].contributionCount === 0 && days[i].date && days[i].date >= today) i--;
   for (; i >= 0 && days[i].contributionCount > 0; i--) current++;
   return { current, longest };
 }
@@ -77,16 +85,16 @@ function activity(u) {
   const gx = W - 36 - weeks.length * step + gap, gy = 186;
   const max = Math.max(1, ...days.map((d) => d.contributionCount));
   const ramp = ['#11202A', '#163F42', C.haze, C.ice, C.ink];
-  const level = (c) => (c === 0 ? 0 : Math.min(4, 1 + Math.floor((c / max) * 3.999)));
+  // square-root scale, so one very busy day doesn't push every other day into the faintest shade
+  const level = (c) => (c === 0 ? 0 : Math.min(4, 1 + Math.floor(Math.sqrt(c / max) * 3.999)));
+  const monthOf = (w) => { const d = w?.contributionDays[0]?.date; return d ? new Date(d + 'T00:00:00Z').toLocaleString('en-US', { month: 'short', timeZone: 'UTC' }) : ''; };
   let lastMonth = '', grid = '';
   weeks.forEach((w, wi) => {
-    const first = w.contributionDays[0];
-    if (first?.date) {
-      const m = new Date(first.date + 'T00:00:00Z').toLocaleString('en-US', { month: 'short', timeZone: 'UTC' });
-      if (m !== lastMonth && wi < weeks.length - 2) {
-        s += text(m.toUpperCase(), { font: F.mono, size: 11, x: gx + wi * step, y: gy - 12, fill: C.ice, tracking: 0.1 });
-        lastMonth = m;
-      }
+    const m = monthOf(w);
+    if (m && m !== lastMonth && wi < weeks.length - 2) {
+      // a month that only owns the first column would collide with the next label, so skip it
+      if (!(wi === 0 && monthOf(weeks[1]) !== m)) s += text(m.toUpperCase(), { font: F.mono, size: 11, x: gx + wi * step, y: gy - 12, fill: C.ice, tracking: 0.1 });
+      lastMonth = m;
     }
     w.contributionDays.forEach((d, di) => {
       const dow = d.date ? new Date(d.date + 'T00:00:00Z').getUTCDay() : di;
@@ -104,24 +112,26 @@ function activity(u) {
   ramp.forEach((c, i) => { s += `<rect x="${lx + i * step}" y="${ly}" width="${cell}" height="${cell}" rx="4" fill="${c}"/>`; });
   s += text('MORE', { font: F.mono, size: 11, x: lx + 5 * step + 6, y: ly + 11, fill: C.ice, tracking: 0.1 });
   const note = u
-    ? `UPDATED ${new Date().toISOString().slice(0, 10)} · PUBLIC ACTIVITY`
+    ? `UPDATED ${new Date().toISOString().slice(0, 10)} · ${cc.restrictedContributionsCount ? 'PUBLIC AND PRIVATE ACTIVITY' : 'PUBLIC ACTIVITY'}`
     : 'WAITING FOR THE FIRST DAILY SYNC';
   s += text(note, { font: F.mono, size: 11, x: 36, y: ly + 11, fill: C.ice, tracking: 0.1 });
 
   write('stats/activity.svg', svg(W, H, s, {
     title: 'GitHub activity',
     desc: stats.map(([n, l]) => `${l}: ${n}`).join(', '),
-    
   }));
 }
 
 function languages(u) {
-  const W = 960, H = 230;
+  const W = 960;
   const totals = {};
   for (const r of u ? u.repositories.nodes : []) for (const e of r.languages.edges) totals[e.node.name] = (totals[e.node.name] || 0) + e.size;
   const sum = Object.values(totals).reduce((a, b) => a + b, 0);
-  let list = Object.entries(totals).sort((a, b) => b[1] - a[1]);
+  // languages under 1% are left out: they would draw as a sliver and an orphan legend row
+  let list = Object.entries(totals).sort((a, b) => b[1] - a[1]).filter(([, v]) => v / sum >= 0.01);
   if (list.length > 8) list = [...list.slice(0, 7), ['Other', list.slice(7).reduce((a, [, v]) => a + v, 0)]];
+  const H = 124 + Math.max(1, Math.ceil(list.length / 3)) * 36;
+  const pct = (v) => `${((v / sum) * 100).toFixed(1)}%`;
   const colors = [C.ink, C.ice, C.accent, C.haze, C.ink2, '#4E9196', C.crimson, '#3A5560'];
   let s = frame(W, H);
   s += text('LANGUAGES ACROSS MY PUBLIC REPOSITORIES', { font: F.mono, size: 12, x: 36, y: 50, fill: C.ice, tracking: 0.12 });
@@ -140,16 +150,20 @@ function languages(u) {
     const cx = bx + (i % cols) * cw, cy = 132 + Math.floor(i / cols) * 36;
     s += `<rect x="${cx}" y="${cy - 11}" width="12" height="12" rx="3" fill="${colors[i]}"/>`;
     s += text(name, { font: F.bodyMedium, size: 16, x: cx + 22, y: cy, fill: C.ink });
-    s += text(`${((v / sum) * 100).toFixed(1)}%`, { font: F.mono, size: 13, x: cx + 30 + measure(name, F.bodyMedium, 16), y: cy, fill: C.ice });
+    s += text(pct(v), { font: F.mono, size: 13, x: cx + 30 + measure(name, F.bodyMedium, 16), y: cy, fill: C.ice });
   });
   write('stats/languages.svg', svg(W, H, s, {
     title: 'Languages',
-    desc: list.map(([n, v]) => `${n} ${((v / sum) * 100).toFixed(1)}%`).join(', ') || 'Waiting for the first sync',
+    desc: list.map(([n, v]) => `${n} ${pct(v)}`).join(', ') || 'Waiting for the first sync',
   }));
 }
 
-let data = null;
-try { data = await fetchData(); } catch (e) { console.error('Stats fetch failed, drawing the waiting state:', e.message); if (process.env.CI) process.exitCode = 1; }
+let data = null, failed = false;
+try { data = await fetchData(); } catch (e) { failed = true; console.error('Stats fetch failed:', e.message); }
+if (!data && (failed || process.env.CI || fs.existsSync(path.join(ASSETS, 'stats/activity.svg')))) {
+  console.error('No live data; the existing cards are left as they are.');
+  process.exit(failed || process.env.CI ? 1 : 0);
+}
 activity(data);
 languages(data);
 console.log(data ? 'stats drawn from live data' : 'stats drawn in waiting state');
