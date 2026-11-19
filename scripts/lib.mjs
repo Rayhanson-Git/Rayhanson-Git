@@ -9,6 +9,8 @@ import opentype from 'opentype.js';
 const require = createRequire(import.meta.url);
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 export const ASSETS = path.join(ROOT, 'assets');
+// PREVIEW_DIR redirects output, so one card can be drawn without touching assets/
+const OUT = process.env.PREVIEW_DIR ? path.resolve(process.env.PREVIEW_DIR) : ASSETS;
 
 // Rayhanson palette, taken from tokens.css and brand/palette.json on rayhanson.tech.
 export const C = {
@@ -93,7 +95,7 @@ export function svg(w, h, body, { title = '', desc = '', defs = '', style = '' }
 export const REDUCED = '@media (prefers-reduced-motion: reduce){*{animation:none!important}}';
 
 export function write(rel, content) {
-  const p = path.join(ASSETS, rel);
+  const p = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(p), { recursive: true });
   fs.writeFileSync(p, content);
   return p;

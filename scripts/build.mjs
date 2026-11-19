@@ -1,6 +1,14 @@
 // Builds the static artwork for the profile README: hero, section headers,
 // buttons, project cards, toolkit and footer. Run: npm run build
-import { C, F, text, paragraph, wrap, measure, svg, write, symbol, symbolHeight, wordmark, icon, REDUCED, r2 } from './lib.mjs';
+import fs from 'node:fs';
+import { hero } from './hero.mjs';
+import { C, F, text, paragraph, wrap, measure, svg, write, symbol, symbolHeight, wordmark, icon, REDUCED, r2, ROOT } from './lib.mjs';
+
+// A card's illustration lives in scripts/motifs/<slug>.mjs as { css, draw() }.
+async function loadMotif(slug) {
+  const file = `${ROOT}/scripts/motifs/${slug}.mjs`;
+  return fs.existsSync(file) ? (await import(file)).default : null;
+}
 
 const fadeStyle = `
 .rise{animation:rise 1s cubic-bezier(.16,1,.3,1) both}
@@ -32,95 +40,6 @@ const para = (str, o) => {
 };
 const cardFrame = (w, h, extra = '') =>
   `<rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" rx="24" fill="${C.paper}" stroke="${C.rule}"/>${extra}`;
-
-// ============================== HERO ==============================
-function hero() {
-  const W = 1280, H = 500;
-  const cx = 960, cy = 250;
-  const nodes = [
-    ['Enigma MCP', 800, 108, 'end'],
-    ['Stanza', 1068, 88, 'start'],
-    ['JimBro', 1172, 214, 'start'],
-    ['LeaveBy', 1150, 380, 'start'],
-    ['GymLog', 972, 438, 'middle'],
-    ['Virtual Theremin', 806, 398, 'end'],
-    ['Gesture Particles', 796, 232, 'end'],
-    ['Neon Orbit Arcade', 920, 64, 'end'],
-  ];
-  const minor = [[860, 180], [1080, 170], [1100, 300], [880, 330], [1010, 352], [1150, 130], [1220, 320], [760, 190]];
-  let strands = '', pulses = '', dots = '', labels = '';
-  const curve = (x1, y1, x2, y2, bend) => {
-    const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
-    const dx = x2 - x1, dy = y2 - y1;
-    return `M${x1} ${y1} Q${r2(mx - dy * bend)} ${r2(my + dx * bend)} ${x2} ${y2}`;
-  };
-  nodes.forEach(([label, x, y, anchor], i) => {
-    const d = curve(cx, cy, x, y, i % 2 ? 0.18 : -0.18);
-    strands += `<path d="${d}" stroke="${C.haze}" stroke-width="1.4" opacity=".55"/>`;
-    pulses += `<path d="${d}" pathLength="100" class="flow" stroke="${i % 3 === 0 ? C.accent2 : C.ice}" stroke-width="2.4" stroke-linecap="round" style="animation-delay:-${(i * 0.7).toFixed(1)}s"/>`;
-    dots += `<circle cx="${x}" cy="${y}" r="13" stroke="${C.ice}" class="pulse" style="animation-delay:-${(i * 0.45).toFixed(2)}s"/>`;
-    dots += `<circle cx="${x}" cy="${y}" r="5.5" fill="${C.ink}"/>`;
-    const lx = anchor === 'end' ? x - 20 : anchor === 'start' ? x + 20 : x;
-    const ly = anchor === 'middle' ? y + 36 : y + 4;
-    labels += text(label.toUpperCase(), { font: F.mono, size: 15, x: lx, y: ly + 1, fill: C.ice, anchor, tracking: 0.06 });
-  });
-  // the outer web: neighbours and minor nodes
-  const ring = nodes.map(([, x, y]) => [x, y]).concat(minor);
-  ring.forEach(([x, y], i) => {
-    const [nx, ny] = ring[(i + 3) % ring.length];
-    strands += `<path d="${curve(x, y, nx, ny, 0.12)}" stroke="${C.deep}" stroke-width="1"/>`;
-  });
-  minor.forEach(([x, y], i) => {
-    strands += `<path d="${curve(cx, cy, x, y, i % 2 ? -0.1 : 0.1)}" stroke="${C.deep}" stroke-width="1.2"/>`;
-    dots += `<circle cx="${x}" cy="${y}" r="2.6" fill="${C.ice}" opacity=".7"/>`;
-  });
-
-  const sw = 92, sh = symbolHeight(sw);
-  const center = `<circle cx="${cx}" cy="${cy}" r="70" fill="${C.paper2}" stroke="${C.haze}"/>` +
-    `<circle cx="${cx}" cy="${cy}" r="88" stroke="${C.ice}" class="pulse" style="animation-duration:5s"/>` +
-    symbol({ x: cx - sw / 2, y: cy - sh / 2 - 2, width: sw });
-
-  const X = 64;
-  const kicker = `<g class="rise" style="animation-delay:.05s"><circle cx="${X + 5}" cy="84" r="5" fill="${C.accent}"/>` +
-    text('RAYHANSON.TECH', { font: F.mono, size: 15, x: X + 20, y: 90, fill: C.ice, tracking: 0.16 }) + `</g>`;
-  const name = `<g class="rise" style="animation-delay:.15s">` +
-    text('Harvey', { font: F.display, size: 96, x: X - 4, y: 186, fill: C.ink, tracking: -0.02 }) +
-    text('Rayhanson', { font: F.display, size: 96, x: X - 4, y: 280, fill: C.ink, tracking: -0.02 }) +
-    `<rect x="${X + measure('Rayhanson', F.display, 96, -0.02) + 4}" y="244" width="16" height="36" fill="${C.accent}" class="blink"/></g>`;
-  const role = `<g class="rise" style="animation-delay:.3s">` +
-    text('MEDIA ARTIST · GRAPHIC DESIGNER · AI ENGINEER', { font: F.mono, size: 16, x: X, y: 330, fill: C.ice, tracking: 0.06 }) + `</g>`;
-  const tag = paragraph('I like understanding how things work, then imagining what else they could do.', {
-    font: F.body, size: 22, x: X, y: 376, width: 560, lineHeight: 1.4, fill: C.ink2,
-  });
-  let chips = '', cxp = X;
-  for (const c of ['AI systems', 'Product design', 'Creative code & sound']) {
-    const w = measure(c, F.bodyMedium, 16) + 34;
-    chips += `<rect x="${cxp + .5}" y="428.5" width="${w}" height="38" rx="19" stroke="${C.haze}" fill="${C.paper2}"/>` +
-      text(c, { font: F.bodyMedium, size: 16, x: cxp + w / 2, y: 453, fill: C.ink, anchor: 'middle' });
-    cxp += w + 10;
-  }
-
-  const defs = `
-<radialGradient id="glow" cx="960" cy="250" r="420" gradientUnits="userSpaceOnUse"><stop stop-color="${C.haze}" stop-opacity=".38"/><stop offset="1" stop-color="${C.haze}" stop-opacity="0"/></radialGradient>
-<radialGradient id="ember" cx="1220" cy="500" r="360" gradientUnits="userSpaceOnUse"><stop stop-color="${C.accent}" stop-opacity=".16"/><stop offset="1" stop-color="${C.accent}" stop-opacity="0"/></radialGradient>
-<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.1" fill="${C.ice}" opacity=".12"/></pattern>
-<linearGradient id="fadeL" x1="0" x2="1"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".55" stop-color="#fff" stop-opacity="1"/></linearGradient>
-<mask id="m"><rect width="${W}" height="${H}" fill="url(#fadeL)"/></mask>
-<clipPath id="clip"><rect width="${W}" height="${H}" rx="28"/></clipPath>`;
-
-  const body = `<g clip-path="url(#clip)"><rect width="${W}" height="${H}" fill="${C.paper}"/>` +
-    `<rect width="${W}" height="${H}" fill="url(#dots)" mask="url(#m)"/>` +
-    `<rect width="${W}" height="${H}" fill="url(#glow)"/><rect width="${W}" height="${H}" fill="url(#ember)"/>` +
-    strands + pulses + dots + labels + center +
-    kicker + name + role + `<g class="rise" style="animation-delay:.45s">${tag.svg}</g><g class="rise" style="animation-delay:.6s">${chips}</g>` +
-    `</g><rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="28" stroke="${C.rule}"/>`;
-
-  write('hero.svg', svg(W, H, body, {
-    title: 'Harvey Rayhanson — Media Artist, Graphic Designer, and AI Engineer',
-    desc: 'The Rayhanson logo at the centre of a living web of projects: Enigma MCP, Stanza, JimBro, LeaveBy, GymLog, Virtual Theremin, Gesture Particles and Neon Orbit Arcade.',
-    defs, style: fadeStyle,
-  }));
-}
 
 // ============================== SECTION HEADERS ==============================
 function header(slug, num, label, title, theme) {
@@ -246,12 +165,13 @@ const motifStyle = `
 .bob{animation:bob 4s ease-in-out infinite alternate}@keyframes bob{to{transform:translateY(-16px)}}
 ${fadeStyle}`;
 
-function featured(slug, p) {
+async function featured(slug, p) {
   const W = 640, H = 360;
   const tx = 32, tw = 372;
+  const custom = await loadMotif(slug);
   let s = cardFrame(W, H);
   s += `<rect x="428" y="20" width="192" height="320" rx="16" fill="${C.paper2}" stroke="${C.rule}"/>`;
-  s += `<svg x="426" y="20" width="196" height="320" viewBox="6 0 208 340" overflow="hidden">${motifs[slug]()}</svg>`;
+  s += `<svg x="426" y="20" width="196" height="320" viewBox="6 0 208 340" overflow="hidden">${custom ? custom.draw() : motifs[slug]()}</svg>`;
   s += text(p.kicker, { font: F.mono, size: 14, x: tx, y: 54, fill: C.ice, tracking: 0.04 });
   s += text(p.title, { font: F.display, size: 42, x: tx - 2, y: 106, fill: C.ink, tracking: -0.015 });
   s += para(p.desc, { font: F.body, size: 19, x: tx, y: 146, width: tw, lineHeight: 1.42, fill: C.ink2, maxLines: 3 });
@@ -264,7 +184,7 @@ function featured(slug, p) {
   }
   s += `<path d="M${tx} 312H${tw + tx}" stroke="${C.rule}"/>`;
   s += cta(p.cta, tx, 338, 14, C.accent2);
-  write(`cards/${slug}.svg`, svg(W, H, s, { title: `${p.title} — ${p.desc}`, desc: p.kicker, style: motifStyle }));
+  write(`cards/${slug}.svg`, svg(W, H, s, { title: `${p.title} — ${p.desc}`, desc: p.kicker, style: custom ? `${custom.css || ''}${REDUCED}` : motifStyle }));
 }
 
 // ============================== SMALL CARDS ==============================
@@ -324,19 +244,23 @@ const miniStyle = `.spin{transform-box:view-box;transform-origin:70px 70px;anima
 .eq{transform-box:fill-box;animation:eq 1.1s ease-in-out infinite alternate}@keyframes eq{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
 ${REDUCED}`;
 
-function mini(slug, p) {
-  const W = 420, H = 250;
+async function mini(slug, p) {
+  const W = 420, H = 320, BAND = 132;
+  const custom = await loadMotif(slug);
   let s = cardFrame(W, H);
-  s += `<svg x="${W - 128}" y="14" width="110" height="110" viewBox="0 0 140 140">${miniMotifs[p.motif]()}</svg>`;
-  s += text(p.kicker, { font: F.mono, size: 14, x: 26, y: 46, fill: C.ice, tracking: 0.02 });
-  const titleLines = paragraph(p.title, { font: F.display, size: 29, x: 25, y: 90, width: 262, lineHeight: 1.1, fill: C.ink });
-  if (titleLines.lines > 2) throw new Error(`Title too long: ${p.title}`);
-  s += titleLines.svg;
-  const dy = 90 + titleLines.height + 4;
-  if (dy > 162) throw new Error(`Card text collides with the title: ${p.title}`);
-  s += para(p.desc, { font: F.body, size: 19, x: 26, y: 162, width: 372, lineHeight: 1.35, fill: C.ink2, maxLines: 2 });
-  s += cta(p.cta, 26, 228, 14, C.accent2);
-  write(`cards/${slug}.svg`, svg(W, H, s, { title: `${p.title} — ${p.desc}`, desc: p.kicker, style: miniStyle }));
+  // illustration band across the top of the card
+  s += `<clipPath id="band"><path d="M.5 24.5a24 24 0 0 1 24-24h371a24 24 0 0 1 24 24V${BAND}H.5z"/></clipPath>`;
+  s += `<g clip-path="url(#band)"><rect width="${W}" height="${BAND}" fill="${C.paper2}"/>` +
+    (custom
+      ? `<svg width="${W}" height="${BAND}" viewBox="0 0 ${W} ${BAND}" overflow="hidden">${custom.draw()}</svg>`
+      : `<svg x="${W - 150}" y="11" width="110" height="110" viewBox="0 0 140 140">${miniMotifs[p.motif]()}</svg>`) + `</g>`;
+  s += `<path d="M.5 ${BAND}H${W - .5}" stroke="${C.rule}"/><rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="24" stroke="${C.rule}"/>`;
+  s += text(p.kicker, { font: F.mono, size: 14, x: 26, y: 166, fill: C.ice, tracking: 0.02 });
+  if (measure(p.title, F.display, 29) > 372) throw new Error(`Title too long: ${p.title}`);
+  s += text(p.title, { font: F.display, size: 29, x: 25, y: 206, fill: C.ink });
+  s += para(p.desc, { font: F.body, size: 19, x: 26, y: 238, width: 372, lineHeight: 1.35, fill: C.ink2, maxLines: 2 });
+  s += cta(p.cta, 26, 298, 14, C.accent2);
+  write(`cards/${slug}.svg`, svg(W, H, s, { title: `${p.title} — ${p.desc}`, desc: p.kicker, style: custom ? `${custom.css || ''}${REDUCED}` : miniStyle }));
 }
 
 // ============================== TOOLKIT ==============================
@@ -418,8 +342,10 @@ function footer() {
 }
 
 // ============================== RUN ==============================
-hero();
-for (const t of ['dark', 'light']) {
+const ONLY = process.env.ONLY;
+const all = !ONLY;
+if (all) hero();
+for (const t of all ? ['dark', 'light'] : []) {
   header('about', '01', 'About', 'Hi, I’m Harvey', t);
   header('work', '02', 'Selected work', 'Things I’ve designed and built', t);
   header('more', '03', 'Apps, creative code & media', 'More work', t);
@@ -427,6 +353,7 @@ for (const t of ['dark', 'light']) {
   header('activity', '05', 'On GitHub', 'Activity, updated daily', t);
   header('support', '06', 'Support', 'Fuel the next build', t);
 }
+if (all) {
 linkButton('portfolio', 'Portfolio', 'symbol');
 linkButton('linkedin', 'LinkedIn', 'linkedin');
 linkButton('email', 'Email', 'mail');
@@ -438,23 +365,24 @@ linkButton('pinterest', 'Pinterest', 'siPinterest');
 supportButtons();
 // invisible gutter between cards in a row (see README.md)
 write('spacer.svg', '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"/>\n');
+}
 
-featured('enigma', {
+if (all || ONLY === 'enigma') await featured('enigma', {
   kicker: 'AI SYSTEMS · RUST · 2026', title: 'Enigma MCP',
   desc: 'A Rust memory server I engineered so AI agents share one searchable brain.',
   stats: [['25', 'MCP tools'], ['512', 'tests'], ['3', 'OSes']], cta: 'CASE STUDY  →',
 });
-featured('stanza', {
+if (all || ONLY === 'stanza') await featured('stanza', {
   kicker: 'MACOS APP · SWIFT · 2026', title: 'Stanza',
   desc: 'The song you’re playing in Spotify or Apple Music, drawn word by word over your Mac.',
   stats: [['23', 'lyric styles'], ['2', 'players'], ['Free', 'MIT']], cta: 'CASE STUDY  →',
 });
-featured('jimbro', {
+if (all || ONLY === 'jimbro') await featured('jimbro', {
   kicker: 'PRODUCT DESIGN · NEXT.JS · 2026', title: 'JimBro',
   desc: 'A local-first gym companion: plan around your day, log every set, review your progress.',
   stats: [['49', 'tests'], ['Live', 'web app'], ['2-in-1', 'LeaveBy+GymLog']], cta: 'CASE STUDY  →',
 });
-featured('theremin', {
+if (all || ONLY === 'theremin') await featured('theremin', {
   kicker: 'GESTURE & SOUND · REACT · 2026', title: 'Virtual Theremin',
   desc: 'Play vocals, bass, and finger-tap drums with your hands. Loop a bar, pick a key, record your take.',
   stats: [['2', 'hands'], ['4', 'drum sounds'], ['0', 'cameras needed']], cta: 'PLAY IT LIVE  →',
@@ -471,11 +399,13 @@ const minis = [
   ['dmc', { motif: 'film', kicker: 'VIDEO EDIT · DAVINCI RESOLVE', title: 'Devil May Cry GMV', desc: '3:50 across DMC 3, 4 and 5, cut against live action.', cta: 'WATCH  →' }],
   ['tesseract', { motif: 'merge', kicker: 'OPEN SOURCE · PYTHON', title: 'Tesseract MCP', desc: 'Merged PR to an agent memory server: atomic writes, per-agent identity.', cta: 'SEE THE PR  →' }],
 ];
-for (const [slug, p] of minis) mini(slug, p);
+for (const [slug, p] of minis) if (all || ONLY === slug) await mini(slug, p);
 
-toolkit();
-toolkit(560, 'toolkit-narrow.svg');
-principle();
-principle(640, 'principle-narrow.svg');
-footer();
-console.log('artwork built');
+if (all) {
+  toolkit();
+  toolkit(560, 'toolkit-narrow.svg');
+  principle();
+  principle(640, 'principle-narrow.svg');
+  footer();
+}
+console.log(all ? 'artwork built' : `${ONLY} built`);
