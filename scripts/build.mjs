@@ -309,7 +309,7 @@ function toolkit(W = 1048, file = 'toolkit.svg') {
 }
 
 // ============================== QUOTE / FOOTER ==============================
-const QUOTE = 'I don’t ship what I don’t understand. I design the architecture, get my hands dirty in the code, and take systems apart until I know exactly why they work. Every call is mine, and nothing goes out until it meets my standard.';
+const QUOTE = 'I don’t ship what I don’t understand. I design the architecture, get my hands dirty in the code, and take systems apart until I know exactly why they work, down to the data model and how they behave when something fails. AI speeds up the routine work. The parts that need real care, I write myself. Every call is mine, and nothing goes out until it meets my standard and passes the tests I wrote.';
 function principle(W = 1280, file = 'principle.svg') {
   const narrow = W < 1000;
   const quote = paragraph(QUOTE, { font: F.displayMedium, size: 29, x: 60, y: 108, width: W - (narrow ? 96 : 130), lineHeight: 1.35, fill: C.ink });

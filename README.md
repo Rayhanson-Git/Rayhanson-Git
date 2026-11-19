@@ -33,7 +33,7 @@ I’m a designer as much as an engineer. I still design, record, and edit, and I
 
 **Ask me about:** MCP servers and multi-agent architecture · hybrid retrieval, RAG, and knowledge graphs · taking a product from wireframe to live app · webcam gestures, shaders, Resolve, Audition, and OBS.
 
-<a href="https://rayhanson.tech/#about"><picture><source media="(max-width: 600px)" srcset="assets/principle-narrow.svg" /><img src="assets/principle.svg" width="100%" alt="How I work: I don’t ship what I don’t understand. I design the architecture, get my hands dirty in the code, and take systems apart until I know exactly why they work. Every call is mine, and nothing goes out until it meets my standard." /></picture></a>
+<a href="https://rayhanson.tech/#about"><picture><source media="(max-width: 600px)" srcset="assets/principle-narrow.svg" /><img src="assets/principle.svg" width="100%" alt="How I work: I don’t ship what I don’t understand. I design the architecture, get my hands dirty in the code, and take systems apart until I know exactly why they work, down to the data model and how they behave when something fails. AI speeds up the routine work. The parts that need real care, I write myself. Every call is mine, and nothing goes out until it meets my standard and passes the tests I wrote." /></picture></a>
 
 <br />
 
